@@ -14,6 +14,9 @@ router.get('/', function(req, res, next) {
   })
 });
 
+
+
+
 router.get('/test', (req, res, next) =>{
   res.render('test');
 });

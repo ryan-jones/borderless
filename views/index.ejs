@@ -7,20 +7,20 @@
  </head>
  <body>
    <h3>Sponsors</h3>
-   <form action="/create" method="post" >
-      <select name="city">
+
+      <select name="address" id="address">
         <option value="barcelona"> Barcelona  </option>
         <option value="madrid"> Madrid </option>
       </select>
-      <button> Submit </button>
-</form>
+      <button id="submit"> Submit </button>
+
    <div id="click-info"></div>
    <div id="map"></div>
 
  </body>
  <script type="text/javascript"> var locations = [<%- companies %>]; </script>
  <script
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ&libraries=places">
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ&callback=initMap">
  </script>
  <script
    src="http://code.jquery.com/jquery-3.2.1.min.js"
