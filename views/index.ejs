@@ -1,33 +1,25 @@
-<!DOCTYPE html>
-<html>
- <head>
-   <title>Title</title>
-   <link rel='stylesheet' href='/stylesheets/style.css' />
-   <title>Sponsors</title>
- </head>
- <body>
-   <h3>Sponsors</h3>
 
-      <select name="address" id="address">
-        <option value="barcelona"> Barcelona  </option>
-        <option value="madrid"> Madrid </option>
-        <option value="paris"> Paris </option>
-        <option value="miami"> Miami </option>
-      </select>
-      <button id="submit"> Submit </button>
 
-   <div id="click-info"></div>
-   <div id="map"></div>
+  <h3>Sponsors</h3>
 
- </body>
- <script type="text/javascript"> var locations = [<%- companies %>]; </script>
- <script
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ&callback=initMap">
- </script>
- <script
-   src="http://code.jquery.com/jquery-3.2.1.min.js"
-   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-   crossorigin="anonymous"></script>
+   <select name="address" id="address">
+     <option value="barcelona"> Barcelona  </option>
+     <option value="madrid"> Madrid </option>
+     <option value="paris"> Paris </option>
+     <option value="miami"> Miami </option>
+   </select>
+   <button id="submit"> Submit </button>
 
- <script type="text/javascript" src="/javascripts/main.js"></script>
-</html>
+  <div id="click-info"></div>
+  <div id="map"></div>
+
+  <script type="text/javascript"> var locations = [<%- companies %>]; </script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ&callback=initMap">
+  </script>
+  <script
+    src="http://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="/javascripts/main.js"></script>
