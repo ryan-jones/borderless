@@ -1,5 +1,3 @@
-
-
   let map = new google.maps.Map(document.getElementById('map'), {
   zoom: 15,
   center: {lat: 41.3977381,
@@ -30,7 +28,6 @@
 
 //loads all of the markers on to the map
 function startMarkers() {
-
     let markers = [];
     locations.forEach(function(places){
       let title = places.name;
@@ -50,6 +47,5 @@ function startMarkers() {
 
 
 $(document).ready(function(){
-
   startMarkers();
 });

@@ -7,6 +7,7 @@ const companySchema = new Schema({
     type: String,
     enum : ['yes', 'maybe', 'no'],
   },
+  city: String,
   coordinates: [Number, Number],  // index 0 is lat, index 1 is long
 });
 // placeSchema.index({ location: '2dsphere' });
