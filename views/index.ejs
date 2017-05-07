@@ -1,23 +1,50 @@
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">navbar</div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4"><h1>Sponsors</h1></div>
+      <div class="col-md-4"></div>
+    </div>
+   <div class="row">
+     <div class="col-md-6">         <!--  beginning of google map view -->
+       <select name="address" id="address">
+          <option value="barcelona"> Barcelona  </option>
+          <option value="madrid"> Madrid </option>
+          <option value="paris"> Paris </option>
+          <option value="miami"> Miami </option>
+       </select>
+       <button id="submit"> Submit </button>
+
+       <div id="click-info"></div>
+       <div id="map"></div>
+     </div> <!-- end of google mape view -->
+
+     <div class="col-md-6"> <!-- company list view -->
+       <h1> testetstetts</h1>
+       <div class="row">
+         <div class="col-md-6">user1</div>
+         <div class="col-md-6">user2</div>
+       </div>
+       <div class="row">
+         <div class="col-md-6">user3</div>
+         <div class="col-md-6">user4</div>
+       </div>
+       <div class="row">
+         <div class="col-md-6">user5</div>
+         <div class="col-md-6">user6</div>
+       </div>
+       <div class="row">
+         <div class="col-md-6">user7</div>
+         <div class="col-md-6">user8</div>
+       </div>
+     </div>
+   </div>
+</div>
+
+</body>
+
+
   
-
-   <select name="address" id="address">
-     <option value="barcelona"> Barcelona  </option>
-     <option value="madrid"> Madrid </option>
-     <option value="paris"> Paris </option>
-     <option value="miami"> Miami </option>
-   </select>
-   <button id="submit"> Submit </button>
-
-  <div id="click-info"></div>
-  <div id="map"></div>
-
-  <script type="text/javascript"> var locations = [<%- companies %>]; </script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ">
-  </script>
-  <script
-    src="http://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-
-  <script type="text/javascript" src="/javascripts/main.js"></script>
