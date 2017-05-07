@@ -15,7 +15,32 @@ router.route('/')
     })
   })
 
+  .post((req, res, next) => {
+    let location = [req.body.longitude, req.body.latitude];
 
+	const newCompany = {
+      name:           req.body.name,
+      description:    req.body.description,
+      city:           req.body.city,
+	    coordinates:    location,
+    };
+
+  	const company = new Company(newCompany);
+
+  	company.save((error) => {
+  		if (error) {
+  			next(error);
+  		} else {
+  			res.redirect('/');
+  		}
+  	})
+  });
+
+router.route('/new')
+  .get((req, res, next) => {
+        res.render('companies/new');
+      }
+    );
 
 
 
