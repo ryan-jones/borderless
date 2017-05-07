@@ -1,7 +1,7 @@
 
 
   let map = new google.maps.Map(document.getElementById('map'), {
-  zoom: 15,
+  zoom: 3,
   center: {lat: 41.3977381,
     lng: 2.190471916}
   });
@@ -9,6 +9,7 @@
 
   $('#submit').on('click', function() {
     geocodeAddress(geocoder, map);
+    map.setZoom(12);  //zooms in on the requested city
   });
 
 
