@@ -5,7 +5,19 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #FFF;
+}
+
+.container-fluid {
+  background-color: #191970;
+}
+
+.white, .caret {
+  color: white;
+}
+
+.navbar-right{
+  padding-right: 2%;
 }
 
 #parent {
@@ -27,17 +39,20 @@ a {
 #right-side {
   background-color: #fff;
   height: 100%;
+  color: black;
 }
 
 .city-nav{
   background-color: #e7e7e7;
-  width: 105%;
-  padding: 0 5%;
-  margin: 0 -3%;
+}
+
+.sponsor{
+text-align: center;
 }
 
 .city-choice{
-width: 100%;
+background-color: #708090;
+text-align: center;
 /*border: 1px solid white;*/
 }
 
