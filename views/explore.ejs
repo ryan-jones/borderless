@@ -11,13 +11,24 @@
            <div class="row city-nav sponsor">
                <h2> Find a sponsor </h2>
                <div class="city-choice">
-                 <select name="address" id="address" class="dropdown">
-                    <option value="barcelona"> Barcelona  </option>
-                    <option value="madrid"> Madrid </option>
-                    <option value="paris"> Paris </option>
-                    <option value="miami"> Miami </option>
-                 </select>
-                 <button class="submit"> Find sponsors </button>
+                 <form id="radio" action="">
+                  <input type="radio" name="radio" value="all" checked> All
+                  <input type="radio" name="radio" value="yes"> Sponsors
+                  <input type="radio" name="radio" value="no" checked> Doesn't Sponsor
+                </form>
+               </div>
+               <div class="row city-choice">
+                 <div class="col-md-6">
+                   <select name="address" id="address" class="form-control dropdown">
+                      <option value="barcelona"> Barcelona  </option>
+                      <option value="madrid"> Madrid </option>
+                      <option value="paris"> Paris </option>
+                      <option value="miami"> Miami </option>
+                   </select>
+                 </div>
+                 <div class="col-md-6">
+                   <button class="submit" id="sponsor-submit"> Find sponsors </button>
+                 </div>
                </div>
           </div>
 
