@@ -10,47 +10,43 @@
  </head>
  <body >
    <div class="container-fluid" >
-     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/"><span class="white">Borderless</span></a>
-        </div>
+         <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><span class="white">Borderless</span></a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="white">Dashboard</span></a></li>
-            <li><a href="#"><span class="white">About</span></a></li>
-            <li><a href="#"><span class="white">Jobs</span></a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="white">English</span> <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Español</a></li>
-                <li><a href="#">Chinese (traditional)</a></li>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/explore"><span class="white">Explore</span></a></li>
+                <li><a href="#"><span class="white">Dashboard</span></a></li>
+                <li><a href="#"><span class="white">About</span></a></li>
+                <li><a href="#"><span class="white">Jobs</span></a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="white">English</span> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Español</a></li>
+                    <li><a href="#">Chinese (traditional)</a></li>
+                  </ul>
+                </li>
+                <li><button type="button" class="btn btn-default navbar-btn">Sign in</button></li>
               </ul>
-            </li>
-            <li><button type="button" class="btn btn-default navbar-btn">Sign in</button></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div> <!-- container-fluid for nav -->
-
-
-      <%- body %>
-    </nav>
+            </div><!-- /.navbar-collapse -->
+          </div> <!-- container-fluid for nav -->
+         </nav>
+       
+    <%- body %>
   </div> <!-- container-fluid" -->
 </body>
 
- <script type="text/javascript"> var locations = [<%- companies %>]; </script>
- <script
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ">
- </script>
  <script
    src="http://code.jquery.com/jquery-3.2.1.min.js"
    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
