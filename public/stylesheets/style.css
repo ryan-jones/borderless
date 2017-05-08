@@ -8,7 +8,7 @@ a {
   color: #FFF;
 }
 
-.container-fluid {
+.container-fluid{
   background-color: #191970;
 }
 
@@ -20,6 +20,15 @@ a {
   padding-right: 2%;
 }
 
+/*landing page*/
+
+.landing-page {
+  text-align: center;
+  width: 100%;
+}
+
+
+/*explore page*/
 #parent {
   height: 100%;
   background-color: black;
@@ -54,6 +63,11 @@ text-align: center;
 background-color: #708090;
 text-align: center;
 /*border: 1px solid white;*/
+}
+
+.submit{
+  margin: 0% 5%;
+  padding: 2%;
 }
 
 .company-row {

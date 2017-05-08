@@ -7,7 +7,7 @@
   });
   let geocoder = new google.maps.Geocoder();
 
-  $('#submit').on('click', function() {
+  $('.submit').on('click', function() {
     geocodeAddress(geocoder, map);
     map.setZoom(12);  //zooms in on the requested city
   });

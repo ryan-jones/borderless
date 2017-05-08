@@ -7,20 +7,28 @@ const bcryptSalt = 10;
 var router = express.Router();
 
 
-/* GET home page. */
-router.route('/')
+
+
+//get home page
+router.get('/', (req, res, next) => {
+    res.render('index');
+  })
+
+
+/* GET explore page. */
+router.route('/explore')
   .get((req, res, next) => {
     Company.find({},{_id: 0} ,(err, companies)=>{  //if _id: 0, the data excludes all _id values, if _id: 1, then it exclusively returns only _ids
       if (err){
-        res.render('index');
+        res.render('explore');
       } else {
         console.log(companies);
-        res.render('index', {companies});
+        res.render('explore', {companies}); //passes to script on explore.ejs page
       }
     })
   })
 
-  .post((req, res, next) => {
+  .post((req, res, next) => { //places the companies onto the map and for use on right-side bar
     let location = [req.body.longitude, req.body.latitude];
 
 	const newCompany = {
@@ -36,10 +44,12 @@ router.route('/')
   		if (error) {
   			next(error);
   		} else {
-  			res.redirect('/');
+  			res.redirect('/explore');
   		}
   	})
   });
+
+
 
 router.route('/new')
   .get((req, res, next) => {
