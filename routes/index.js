@@ -116,15 +116,19 @@ router.get("/login", (req, res, next) => {
 
 
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/users/index",
+  successRedirect: "/users/index/",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
 }));
 
-router.get('/users/index', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
-  res.render('users/index', { user: JSON.stringify(req.user) });
-});
+
+router.get('/users/index/', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
+  if(req.user.role === "USER") {
+    res.render('users/index', { user: JSON.stringify(req.user) });
+  } else {
+    res.render('companies/index', { user: JSON.stringify(req.user) });
+}});
 
 router.get('/new', auth.checkLoggedIn('You must be login', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
   res.render('companies/new', { user: JSON.stringify(req.user) });
