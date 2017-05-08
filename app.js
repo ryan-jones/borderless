@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+// var explore = require('./routes/explore');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', index);
+// app.use('/explore', explore);
 // app.use('/', createController);
 app.use('/users', users);
 
