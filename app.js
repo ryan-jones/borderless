@@ -5,6 +5,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const session        = require("express-session");
+const auth           = require('./helpers/auth');
+const flash          = require("connect-flash");
 const mongoose = require('mongoose');
 
 
@@ -29,7 +32,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session
+app.use(session({
+  secret           : "passport-local-strategy",
+  resave           : true,
+  saveUninitialized: true,
+  cookie           : { maxAge: 60000 }
+}));
 
+app.use(flash());
+const passport = require('./helpers/passport');
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(auth.setCurrentUser);
 
 app.use('/', index);
 // app.use('/', createController);
