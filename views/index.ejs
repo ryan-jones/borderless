@@ -13,34 +13,59 @@
 
 
       <div class="row landing-login">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
-          Login as a <select name="user" id="user" class="dropdown">
-            <option value="job-seeker"> job-seeker  </option>
-            <option value="employer"> employer </option>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Signup as
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="/explore"> a Job-seeker</a></li>
+              <li><a href="companies/new"> an Employer</a></li>
+
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="city-choice">
+            <select name="city" id="city" class="form-control dropdown">
+               <option value="barcelona"> Barcelona  </option>
+               <option value="madrid"> Madrid </option>
+               <option value="paris"> Paris </option>
+               <option value="miami"> Miami </option>
             </select>
+            <button id="test" class="submit"> Find sponsors </button>
+          </div>
+          <!-- <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Find sponsors in
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li class="city" value="barcelona"> Barcelona</li>
+              <li class="city" value="madrid"> Madrid</li>
+              <li class="city" value="paris"> Paris</li>
+              <li class="city" value="miami"> Miami</li>
+            </ul>
+          </div> -->
         </div>
-
-        <div class="col-md-4">
-          or explore sponsors by city <select name="address" id="address" class="dropdown">
-           <option value="barcelona"> Barcelona  </option>
-           <option value="madrid"> Madrid </option>
-           <option value="paris"> Paris </option>
-           <option value="miami"> Miami </option>
-           </select>
-           <button class="sponsor-submit"> Explore sponsors </button>
-        </div>
-        <div class="col-md-2"></div>
-
-
-
+        <div class="col-md-1"></div>
 
       </div>
 
     </section>
-
   </div> <!-- background image -->
-
-
-
 </section>
+
+<script
+ src="http://code.jquery.com/jquery-3.2.1.min.js"
+ integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ crossorigin="anonymous"></script>
+ <script
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ">
+ </script>
+ <script type="text/javascript" src="/javascripts/landing-page.js"></script>
