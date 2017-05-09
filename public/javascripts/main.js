@@ -59,7 +59,7 @@ var map;
 
   //loads all of the markers on to the map
    function startMarkers() {
-
+    console.log(locations);
       let markers = [];
       locations.forEach(function(places){
         let title = places.name;
