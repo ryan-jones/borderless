@@ -154,4 +154,19 @@ margin-right: 5%;
 .dashboard{
   height: 100vh;
   background-color: blue;
+  text-align: center;
+}
+
+.profile-left{
+  border: 1px solid white;
+  height: 100%;
+}
+
+.image-div{
+  height: 20vh;
+  border: 1px solid yellow;
+}
+.profile-right{
+  border: 1px solid red;
+  height: 100%;
 }
