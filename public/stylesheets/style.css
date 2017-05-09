@@ -1,8 +1,15 @@
 body {
   height: 100%;
   padding: 50px 0 0 0 ;
+  position: relative;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #191970;
+  margin: 0;
+}
+
+.no-marg{
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 a {
@@ -54,21 +61,27 @@ select {
 
 /*explore page*/
 #parent {
-  height: 100%;
+  height: 100vh;
+  width: inherit;
   background-color: black;
+  border: 2px solid black;
 
 }
 #map {
- height: 100%;
- margin-right: -3%;
+height: 100%;
+width: 106%;
+margin-left: -3%;
 }
 
 #left-side {
   background-color: #fff;
-  height: 660px;
+  height: 100%;
+  width: 50%;
+  border: 1px solid blue;
 }
 
 #right-side {
+
   background-color: #fff;
   height: 100%;
   color: black;
@@ -80,17 +93,28 @@ select {
 
 .sponsor{
 text-align: center;
+/*position: fixed;*/
 }
 
 .city-choice{
+display: inline-block;
+padding: 2% 0;
 background-color: #708090;
 text-align: center;
+width: 100%;
+height: 100%;
 /*border: 1px solid white;*/
 }
 
 .submit{
   margin: 0% 5%;
   padding: 2%;
+}
+
+.company-list {
+  height: 500px;
+  overflow-y:auto;
+  white-space: nowrap;
 }
 
 .company-row {
@@ -104,7 +128,7 @@ text-align: center;
 }
 
 #address{
-  
+width: 110%;
 }
 
 #radio{
@@ -113,5 +137,14 @@ text-align: center;
 }
 
 #sponsor-submit {
+width: 90%;
+padding: 2.5%;
+margin-right: 5%;
+}
 
+.prevent-overlap{
+  height: 80px;
+  z-index: 100;
+
+  background-color: red;
 }

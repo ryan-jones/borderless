@@ -2,7 +2,7 @@
 var geocoder = new google.maps.Geocoder();
 var coordinates= [];
 var landingAddress = cities;
-
+var infowindow;
 
 
 
@@ -69,11 +69,12 @@ var landingAddress = cities;
         } else if (companies.description === "yes") {
           icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
         }
-        var pin = new google.maps.Marker({position, map, title,icon});
+
+         var pin = new google.maps.Marker({position, map, title,icon});
         markers.push(pin);
+
       }); // locations.forEach
-      console.log(markers);
-  } // startMarkers
+    };  // startMarkers
 
 
 
