@@ -3,14 +3,15 @@
 
    <div class="row" id="parent">
        <div class="col-md-6" id="left-side">
-         <div id="map"> </div>        <!--  beginning of google map view -->
-         <div id="click-info"></div>
-       </div> <!-- end of google mape view -->
 
+           <div id="map"> </div>        <!--  beginning of google map view -->
+           <div id="click-info"></div>
+         </div> <!-- end of google mape view -->
+       
        <div class="col-md-6" id="right-side">  <!-- company list view -->
            <div class="row city-nav sponsor">
                <h2> Find a sponsor </h2>
-               <div class="city-choice">
+               <div >
                  <form id="radio" action="">
                   <input type="radio" name="radio" value="all" checked> All
                   <input type="radio" name="radio" value="yes"> Sponsors
@@ -49,14 +50,23 @@
              <div class="col-md-6 company">mobile bakery</div>
              <div class="col-md-6 company">letgo</div>
            </div>
+           <div class="row company-row">
+             <div class="col-md-6 company">mobile bakery</div>
+             <div class="col-md-6 company">letgo</div>
+           </div>
+           <div class="row company-row">
+             <div class="col-md-6 company">mobile bakery</div>
+             <div class="col-md-6 company">letgo</div>
+           </div>
          </section>
        </div> <!-- right side -->
   </div> <!-- intial row div -->
+  <!-- <section class="container-fluid prevent-overlap"> </section> -->
   <script
    src="http://code.jquery.com/jquery-3.2.1.min.js"
    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
    crossorigin="anonymous"></script>
    <script type="text/javascript"> var locations = [<%- companies %>]; var cities = "<%- city %>"; </script>
    <script
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ">
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ&libraries=companies">
    </script>
