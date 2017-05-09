@@ -14,6 +14,7 @@ const mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var api   = require('./routes/api');
 // var explore = require('./routes/explore');
 
 var app = express();
@@ -48,9 +49,8 @@ app.use(passport.session());
 
 app.use(auth.setCurrentUser);
 
+app.use('/api', api);
 app.use('/', index);
-// app.use('/explore', explore);
-// app.use('/', createController);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
