@@ -4,10 +4,6 @@ var coordinates= [];
 var landingAddress = cities;
 var infowindow;
 
-
-
-
-
   function geocodeAddressFirst(geocoder, resultsMap) {
     geocoder.geocode( { 'address': landingAddress}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
@@ -38,6 +34,15 @@ var infowindow;
 
 
 
+
+    $('.submit').on('click', function() {
+      geocodeAddress(geocoder, map);
+      map.setZoom(12);  //zooms in on the requested city
+      //get dinamically from the API JS the resturants in the area
+      let city = document.getElementById('address').value;
+      loadCityCompanies(city);
+    });
+
   //takes the city selected in index.ejs and assigns it as the address
     function geocodeAddress(geocoder, resultsMap) {
       let address = document.getElementById('address').value;
@@ -53,7 +58,7 @@ var infowindow;
 
   //loads all of the markers on to the map
    function startMarkers() {
-    console.log(locations);
+    // console.log(companies);
       let markers = [];
       locations.forEach(function(companies){
         map = map;
@@ -85,11 +90,32 @@ $(document).ready(function(){
 
   // startMarkers();
 
+    function loadCityCompanies(location) {
+    console.log(location);
+    $.ajax({
+      
+      url: "http://localhost:3000/api?location=" + location,
+      method: 'GET',
+      success: function(companies) {
+        $('.company-list').html('');
+        var companyContent = '';
+        companies.forEach((company) => {
+          companyContent = `<div class="col-md-6 company">${company.name}</div>`;
+          $('.company-list').append(companyContent);
+        })
+        console.log(companies);
+    },
+      error: function (err) {
+      console.log(err);
+      }
+    });
+    };
 
-  $('.submit').on('click', function() {
-    geocodeAddress(geocoder, map);
-    map.setZoom(12);  //zooms in on the requested city
+//   $('.submit').on('click', function() {
+//     geocodeAddress(geocoder, map);
+//     map.setZoom(12);  //zooms in on the requested city
 
-  });
+  $(document).ready(function(){
+    geocodeAddressFirst(geocoder, map);
 
 }); //document ready
