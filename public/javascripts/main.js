@@ -2,9 +2,14 @@
 var geocoder = new google.maps.Geocoder();
 var coordinates= [];
 var landingAddress = cities;
+<<<<<<< HEAD
 console.log(cities);
 console.log(locations)
 var map;
+=======
+var infowindow;
+
+>>>>>>> development
 
 
 
@@ -19,8 +24,13 @@ var map;
         map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: Number(coordinates[0]), lng: Number(coordinates[1])},
         zoom: 8,
+<<<<<<< HEAD
       });
       startMarkers();
+=======
+        });
+        startMarkers();
+>>>>>>> development
         return map;
       }
     });
@@ -39,6 +49,7 @@ var map;
 
 
 
+<<<<<<< HEAD
     $('.submit').on('click', function() {
       geocodeAddress(geocoder, map);
       map.setZoom(12);  //zooms in on the requested city
@@ -48,6 +59,8 @@ var map;
     });
 
 
+=======
+>>>>>>> development
   //takes the city selected in index.ejs and assigns it as the address
     function geocodeAddress(geocoder, resultsMap) {
       let address = document.getElementById('address').value;
@@ -65,23 +78,35 @@ var map;
    function startMarkers() {
     // console.log(companies);
       let markers = [];
-      locations.forEach(function(places){
-        let title = places.name;
+      locations.forEach(function(companies){
+        map = map;
+        let title = companies.name;
         let position = {
-          lat: places.coordinates[1],
-          lng: places.coordinates[0]
+          lat: companies.coordinates[1],
+          lng: companies.coordinates[0]
         };
         var icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
 
-        if(places.description === "maybe"){
+        if(companies.description === "maybe"){
           icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
-        } else if (places.description === "yes") {
+        } else if (companies.description === "yes") {
           icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
         }
-        var pin = new google.maps.Marker({position, map, title, icon});
+
+         var pin = new google.maps.Marker({position, map, title,icon});
         markers.push(pin);
+
       }); // locations.forEach
-  } // startMap
+    };  // startMarkers
+
+
+
+$(document).ready(function(){
+
+
+  geocodeAddressFirst(geocoder, map);
+
+  // startMarkers();
 
     function loadCityCompanies(location) {
     console.log(location);
@@ -107,8 +132,15 @@ var map;
 
 
 
+  $('.submit').on('click', function() {
+    geocodeAddress(geocoder, map);
+    map.setZoom(12);  //zooms in on the requested city
 
+<<<<<<< HEAD
   $(document).ready(function(){
     geocodeAddressFirst(geocoder, map);
+=======
+  });
+>>>>>>> development
 
-  }); //document ready
+}); //document ready

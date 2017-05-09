@@ -20,12 +20,21 @@ router.get('/', (req, res, next) => {
 /* GET explore page. */
 router.route('/explore')
   .get((req, res, next) => {
+<<<<<<< HEAD
     let city = req.query.city;
+=======
+>>>>>>> development
     Company.find({},{_id: 0} ,(err, companies)=>{  //if _id: 0, the data excludes all _id values, if _id: 1, then it exclusively returns only _ids
       if (err){
         res.render('explore');
       } else {
+<<<<<<< HEAD
         res.render('explore', {companies , city});
+=======
+        let city = req.query.city;
+        res.render('explore', {companies , city});
+        console.log('companies', companies);
+>>>>>>> development
          //passes to script on explore.ejs page
       }
 
@@ -34,9 +43,9 @@ router.route('/explore')
   })
 
   .post((req, res, next) => { //places the companies onto the map and for use on right-side bar
-    let location = [req.body.longitude, req.body.latitude];
+    let location = [Number(req.body.longitude), Number(req.body.latitude)];
 
-	const newCompany = {
+	   const newCompany = {
       name:           req.body.name,
       description:    req.body.description,
       city:           req.body.city,
@@ -135,7 +144,7 @@ router.get("/logout", (req, res) => {
   req.logout();
   delete res.locals.currentUser;
   delete req.session.passport;
-  // delete currentUser and passport properties 
+  // delete currentUser and passport properties
   // becasuse when we calling req.logout() is leaving an empty object inside both properties.
   res.redirect('/');
 });
