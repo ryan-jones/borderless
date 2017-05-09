@@ -20,16 +20,13 @@ router.get('/', (req, res, next) => {
 /* GET explore page. */
 router.route('/explore')
   .get((req, res, next) => {
-    console.log(req.query);
     let city = req.query.city;
     Company.find({},{_id: 0} ,(err, companies)=>{  //if _id: 0, the data excludes all _id values, if _id: 1, then it exclusively returns only _ids
       if (err){
         res.render('explore');
       } else {
-        console.log('city1', city);
         res.render('explore', {companies , city});
          //passes to script on explore.ejs page
-        console.log('companies', companies);
       }
 
     })
@@ -56,9 +53,6 @@ router.route('/explore')
   		}
   	})
   });
-
-
-
 
 
 /* GET users listing. */

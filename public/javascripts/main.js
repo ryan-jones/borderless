@@ -2,8 +2,8 @@
 var geocoder = new google.maps.Geocoder();
 var coordinates= [];
 var landingAddress = cities;
-console.log(locations);
-console.log(landingAddress);
+console.log(cities);
+console.log(locations)
 var map;
 
 
@@ -19,7 +19,8 @@ var map;
         map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: Number(coordinates[0]), lng: Number(coordinates[1])},
         zoom: 8,
-        });
+      });
+      startMarkers();
         return map;
       }
     });
@@ -41,6 +42,9 @@ var map;
     $('.submit').on('click', function() {
       geocodeAddress(geocoder, map);
       map.setZoom(12);  //zooms in on the requested city
+      //get dinamically from the API JS the resturants in the area
+      let city = document.getElementById('address').value;
+      loadCityCompanies(city);
     });
 
 
@@ -59,7 +63,7 @@ var map;
 
   //loads all of the markers on to the map
    function startMarkers() {
-    console.log(locations);
+    // console.log(companies);
       let markers = [];
       locations.forEach(function(places){
         let title = places.name;
@@ -79,10 +83,32 @@ var map;
       }); // locations.forEach
   } // startMap
 
+    function loadCityCompanies(location) {
+    console.log(location);
+    $.ajax({
+      
+      url: "http://localhost:3000/api?location=" + location,
+      method: 'GET',
+      success: function(companies) {
+        $('.company-list').html('');
+        var companyContent = '';
+        companies.forEach((company) => {
+          companyContent = `<div class="col-md-6 company">${company.name}</div>`;
+          $('.company-list').append(companyContent);
+        })
+        console.log(companies);
+    },
+      error: function (err) {
+      console.log(err);
+      }
+    });
+    };
+
+
+
 
 
   $(document).ready(function(){
     geocodeAddressFirst(geocoder, map);
-    startMarkers();
 
   }); //document ready
