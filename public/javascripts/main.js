@@ -83,10 +83,10 @@ var infowindow;
 
 
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
 
-  geocodeAddressFirst(geocoder, map);
+//   geocodeAddressFirst(geocoder, map);
 
   // startMarkers();
 
