@@ -155,3 +155,13 @@ margin-right: 5%;
   height: 100vh;
   background-color: blue;
 }
+
+.profile-left{
+  border: 1px solid white;
+  height: 100%;
+}
+
+.profile-right{
+  border: 1px solid red;
+  height: 100%;
+}
