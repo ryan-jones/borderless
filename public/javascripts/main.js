@@ -2,17 +2,7 @@
 var geocoder = new google.maps.Geocoder();
 var coordinates= [];
 var landingAddress = cities;
-<<<<<<< HEAD
-console.log(cities);
-console.log(locations)
-var map;
-=======
 var infowindow;
-
->>>>>>> development
-
-
-
 
   function geocodeAddressFirst(geocoder, resultsMap) {
     geocoder.geocode( { 'address': landingAddress}, function(results, status) {
@@ -24,13 +14,8 @@ var infowindow;
         map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: Number(coordinates[0]), lng: Number(coordinates[1])},
         zoom: 8,
-<<<<<<< HEAD
-      });
-      startMarkers();
-=======
         });
         startMarkers();
->>>>>>> development
         return map;
       }
     });
@@ -49,7 +34,7 @@ var infowindow;
 
 
 
-<<<<<<< HEAD
+
     $('.submit').on('click', function() {
       geocodeAddress(geocoder, map);
       map.setZoom(12);  //zooms in on the requested city
@@ -58,9 +43,6 @@ var infowindow;
       loadCityCompanies(city);
     });
 
-
-=======
->>>>>>> development
   //takes the city selected in index.ejs and assigns it as the address
     function geocodeAddress(geocoder, resultsMap) {
       let address = document.getElementById('address').value;
@@ -129,18 +111,11 @@ $(document).ready(function(){
     });
     };
 
+//   $('.submit').on('click', function() {
+//     geocodeAddress(geocoder, map);
+//     map.setZoom(12);  //zooms in on the requested city
 
-
-
-  $('.submit').on('click', function() {
-    geocodeAddress(geocoder, map);
-    map.setZoom(12);  //zooms in on the requested city
-
-<<<<<<< HEAD
   $(document).ready(function(){
     geocodeAddressFirst(geocoder, map);
-=======
-  });
->>>>>>> development
 
 }); //document ready

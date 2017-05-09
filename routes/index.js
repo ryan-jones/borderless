@@ -20,21 +20,12 @@ router.get('/', (req, res, next) => {
 /* GET explore page. */
 router.route('/explore')
   .get((req, res, next) => {
-<<<<<<< HEAD
     let city = req.query.city;
-=======
->>>>>>> development
     Company.find({},{_id: 0} ,(err, companies)=>{  //if _id: 0, the data excludes all _id values, if _id: 1, then it exclusively returns only _ids
       if (err){
         res.render('explore');
       } else {
-<<<<<<< HEAD
         res.render('explore', {companies , city});
-=======
-        let city = req.query.city;
-        res.render('explore', {companies , city});
-        console.log('companies', companies);
->>>>>>> development
          //passes to script on explore.ejs page
       }
 
