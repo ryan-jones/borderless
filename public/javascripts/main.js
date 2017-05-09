@@ -2,9 +2,8 @@
 var geocoder = new google.maps.Geocoder();
 var coordinates= [];
 var landingAddress = cities;
-console.log(locations);
-console.log(landingAddress);
-var map;
+
+
 
 
 
@@ -20,6 +19,7 @@ var map;
         center: {lat: Number(coordinates[0]), lng: Number(coordinates[1])},
         zoom: 8,
         });
+        startMarkers();
         return map;
       }
     });
@@ -36,12 +36,6 @@ var map;
     // });
   }
 
-
-
-    $('.submit').on('click', function() {
-      geocodeAddress(geocoder, map);
-      map.setZoom(12);  //zooms in on the requested city
-    });
 
 
   //takes the city selected in index.ejs and assigns it as the address
@@ -61,28 +55,40 @@ var map;
    function startMarkers() {
 
       let markers = [];
-      locations.forEach(function(places){
-        let title = places.name;
+      locations.forEach(function(companies){
+        map = map;
+        let title = companies.name;
         let position = {
-          lat: places.coordinates[1],
-          lng: places.coordinates[0]
+          lat: companies.coordinates[1],
+          lng: companies.coordinates[0]
         };
         var icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
 
-        if(places.description === "maybe"){
+        if(companies.description === "maybe"){
           icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
-        } else if (places.description === "yes") {
+        } else if (companies.description === "yes") {
           icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
         }
-        var pin = new google.maps.Marker({position, map, title, icon});
+        var pin = new google.maps.Marker({position, map, title,icon});
         markers.push(pin);
       }); // locations.forEach
-  } // startMap
+      console.log(markers);
+  } // startMarkers
 
 
 
-  $(document).ready(function(){
-    geocodeAddressFirst(geocoder, map);
-    startMarkers();
+$(document).ready(function(){
 
-  }); //document ready
+
+  geocodeAddressFirst(geocoder, map);
+
+  // startMarkers();
+
+
+  $('.submit').on('click', function() {
+    geocodeAddress(geocoder, map);
+    map.setZoom(12);  //zooms in on the requested city
+
+  });
+
+}); //document ready
