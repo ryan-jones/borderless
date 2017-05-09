@@ -34,9 +34,9 @@ router.route('/explore')
   })
 
   .post((req, res, next) => { //places the companies onto the map and for use on right-side bar
-    let location = [req.body.longitude, req.body.latitude];
+    let location = [Number(req.body.longitude), Number(req.body.latitude)];
 
-	const newCompany = {
+	   const newCompany = {
       name:           req.body.name,
       description:    req.body.description,
       city:           req.body.city,
@@ -135,7 +135,7 @@ router.get("/logout", (req, res) => {
   req.logout();
   delete res.locals.currentUser;
   delete req.session.passport;
-  // delete currentUser and passport properties 
+  // delete currentUser and passport properties
   // becasuse when we calling req.logout() is leaving an empty object inside both properties.
   res.redirect('/');
 });
