@@ -1,0 +1,72 @@
+
+
+
+   <div class="row" id="parent">
+       <div class="col-md-6" id="left-side">
+
+           <div id="map"> </div>        <!--  beginning of google map view -->
+           <div id="click-info"></div>
+         </div> <!-- end of google mape view -->
+       
+       <div class="col-md-6" id="right-side">  <!-- company list view -->
+           <div class="row city-nav sponsor">
+               <h2> Find a sponsor </h2>
+               <div >
+                 <form id="radio" action="">
+                  <input type="radio" name="radio" value="all" checked> All
+                  <input type="radio" name="radio" value="yes"> Sponsors
+                  <input type="radio" name="radio" value="no" checked> Doesn't Sponsor
+                </form>
+               </div>
+               <div class="row city-choice">
+                 <div class="col-md-6">
+                   <select name="address" id="address" class="form-control dropdown">
+                      <option value="barcelona"> Barcelona  </option>
+                      <option value="madrid"> Madrid </option>
+                      <option value="paris"> Paris </option>
+                      <option value="miami"> Miami </option>
+                   </select>
+                 </div>
+                 <div class="col-md-6">
+                   <button class="submit" id="sponsor-submit"> Find sponsors </button>
+                 </div>
+               </div>
+          </div>
+
+         <section class="company-list">
+           <div class="row company-row">
+             <div class="col-md-6 company">skyscanner</div>
+             <div class="col-md-6 company">glovo</div>
+           </div>
+           <div class="row company-row">
+             <div class="col-md-6 company">ironhack</div>
+             <div class="col-md-6 company">badi</div>
+           </div>
+           <div class="row company-row">
+             <div class="col-md-6 company">wallapop</div>
+             <div class="col-md-6 company">vibbo</div>
+           </div>
+           <div class="row company-row">
+             <div class="col-md-6 company">mobile bakery</div>
+             <div class="col-md-6 company">letgo</div>
+           </div>
+           <div class="row company-row">
+             <div class="col-md-6 company">mobile bakery</div>
+             <div class="col-md-6 company">letgo</div>
+           </div>
+           <div class="row company-row">
+             <div class="col-md-6 company">mobile bakery</div>
+             <div class="col-md-6 company">letgo</div>
+           </div>
+         </section>
+       </div> <!-- right side -->
+  </div> <!-- intial row div -->
+  <!-- <section class="container-fluid prevent-overlap"> </section> -->
+  <script
+   src="http://code.jquery.com/jquery-3.2.1.min.js"
+   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+   crossorigin="anonymous"></script>
+   <script type="text/javascript"> var locations = [<%- companies %>]; var cities = "<%- city %>"; </script>
+   <script
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ&libraries=companies">
+   </script>

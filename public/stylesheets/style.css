@@ -1,0 +1,157 @@
+body {
+  height: 100%;
+  padding: 50px 0 0 0 ;
+  position: relative;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #191970;
+  margin: 0;
+}
+
+.no-marg{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+a {
+  color: #FFF;
+}
+
+select {
+  appearance: none;
+}
+
+.container-fluid{
+  background-color: #191970;
+}
+
+.white, .caret {
+  color: white;
+}
+
+.navbar-right{
+  padding-right: 2%;
+}
+
+/*landing page*/
+
+.landing-page {
+  text-align: center;
+
+  height: 800px;
+  background-color: #191970;
+}
+
+.background-image {
+  background-image: url("https://img.washingtonpost.com/wp-apps/imrs.php?src=https://img.washingtonpost.com/blogs/wonkblog/files/2014/07/Screen-Shot-2014-07-17-at-1.24.19-PM.png&w=1484");
+  max-height: 60%;
+  color: #FFF;
+}
+
+.landing-header {
+  margin: 10% 0;
+
+}
+
+.landing-login {
+  margin-top: 15%;
+  background-color: #FFF;
+  color: black;
+  padding: 2% 0;
+}
+
+/*explore page*/
+#parent {
+  height: 100vh;
+  width: inherit;
+  background-color: black;
+  border: 2px solid black;
+
+}
+#map {
+height: 100%;
+width: 106%;
+margin-left: -3%;
+}
+
+#left-side {
+  background-color: #fff;
+  height: 100%;
+  width: 50%;
+  border: 1px solid blue;
+}
+
+#right-side {
+
+  background-color: #fff;
+  height: 100%;
+  color: black;
+}
+
+.city-nav{
+  background-color: #e7e7e7;
+}
+
+.sponsor{
+text-align: center;
+/*position: fixed;*/
+}
+
+.city-choice{
+display: inline-block;
+padding: 2% 0;
+background-color: #708090;
+text-align: center;
+width: 100%;
+height: 100%;
+/*border: 1px solid white;*/
+}
+
+.submit{
+  margin: 0% 5%;
+  padding: 2%;
+}
+
+.company-list {
+  height: 500px;
+  overflow-y:auto;
+  white-space: nowrap;
+}
+
+.company-row {
+  margin: 10% 5%;
+  /*border: 1px solid yellow;*/
+}
+
+.company {
+  /*border: 1px solid white;*/
+  padding:5%;
+}
+
+#address{
+width: 110%;
+}
+
+#radio{
+  width: 100%;
+  text-align: center;
+}
+
+#sponsor-submit {
+width: 90%;
+padding: 2.5%;
+margin-right: 5%;
+}
+
+/*.prevent-overlap{
+  height: 80px;
+  z-index: 100;
+
+  background-color: red;
+}*/
+
+/*dashboards for user and company*******************/
+
+.dashboard{
+  height: 100vh;
+  background-color: blue;
+}
