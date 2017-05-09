@@ -142,9 +142,16 @@ padding: 2.5%;
 margin-right: 5%;
 }
 
-.prevent-overlap{
+/*.prevent-overlap{
   height: 80px;
   z-index: 100;
 
   background-color: red;
+}*/
+
+/*dashboards for user and company*******************/
+
+.dashboard{
+  height: 100vh;
+  background-color: blue;
 }
