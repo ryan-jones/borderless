@@ -93,7 +93,7 @@ $(document).ready(function(){
     function loadCityCompanies(location) {
     console.log(location);
     $.ajax({
-      
+
       url: "http://localhost:3000/api?location=" + location,
       method: 'GET',
       success: function(companies) {
