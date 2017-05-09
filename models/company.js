@@ -9,6 +9,9 @@ const companySchema = new Schema({
   },
   city: String,
   coordinates: [Number, Number],  // index 0 is lat, index 1 is long
+  icon: String,
+  type: String,
+  website: String,
 });
 // placeSchema.index({ location: '2dsphere' });
 
