@@ -18,6 +18,11 @@ router.get('/', (req, res, next) => {
   })
 
 
+//test page
+router.get('/indeed', (req, res, next) => {
+    res.render('indeed');
+  })
+
 /* GET explore page. */
 router.route('/explore')
   .get((req, res, next) => {
@@ -40,8 +45,14 @@ router.route('/explore')
 	   const newCompany = {
       name:           req.body.name,
       description:    req.body.description,
+      position:       req.body.position,
       city:           req.body.city,
-	    coordinates:    location,
+      coordinates:    location,
+      icon:           req.body.icon,
+      type:           req.body.type,
+      website:        req.body.website,
+      details:        req.body.details
+
     };
 
   	const company = new Company(newCompany);
@@ -122,7 +133,7 @@ router.get('/users/index/', auth.checkLoggedIn('You must be login', '/login'), (
   if(req.user.role === "USER") {
       res.render('users/index', { user: JSON.stringify(req.user) });
   } else if (req.user.role === "COMPANY") {
-      res.render('companies/index', { user: JSON.stringify(req.user) });
+      res.render('companies/new', { user: JSON.stringify(req.user) });
   } else {
       res.render('admin/index', { user: JSON.stringify(req.user) });
     }
