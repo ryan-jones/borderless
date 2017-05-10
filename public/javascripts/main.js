@@ -58,9 +58,7 @@ var infowindow;
         };
         var icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
 
-        if(companies.description === "maybe"){
-          icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
-        } else if (companies.description === "yes") {
+        if (companies.description === "YES") {
           icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
         }
 
