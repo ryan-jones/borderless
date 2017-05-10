@@ -10,7 +10,9 @@ const userSchema = new Schema({
   name: String,
   username: String,
   password: String,
-  nationality: String
+  nationality: String,
+  position: String,
+  location: String,
 	}, {
   	timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 	}
