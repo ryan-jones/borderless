@@ -134,7 +134,7 @@ router.get('/users/index/', auth.checkLoggedIn('You must be login', '/login'), (
   if(req.user.role === "USER") {
       res.render('users/index', { user: JSON.stringify(req.user) });
   } else if (req.user.role === "COMPANY") {
-      res.render('companies/new', { user: JSON.stringify(req.user) });
+      res.render('companies/index', { user: JSON.stringify(req.user) });
   } else {
       res.render('admin/index', { user: JSON.stringify(req.user) });
     }
