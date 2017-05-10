@@ -91,7 +91,6 @@ var infowindow;
         }
       });
     };
-  });
 
   $(document).ready(function(){
     geocodeAddressFirst(geocoder, map);
