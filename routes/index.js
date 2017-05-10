@@ -5,6 +5,7 @@ const User     = require("../models/user");
 const passport = require("../helpers/passport");
 const bcryptSalt = 10;
 var auth    = require('../helpers/auth');
+const flash          = require("connect-flash");
 
 var router = express.Router();
 

@@ -16,21 +16,20 @@ var infowindow;
         zoom: 8,
         });
         startMarkers();
+        loadCityCompanies(landingAddress);
         return map;
       }
     });
-
-
-    // geocoder.geocode({'address': landingAddress}, function(results, status) {
-    //   if (status === 'OK') {
-    //     console.log(resultsMap);
-    //     resultsMap.setCenter(results[0].geometry.location);
-    //
-    //   } else {
-    //     alert('Geocode was not successful for the following reason: ' + status);
-    //   }
-    // });
   }
+
+
+    $('.submit').on('click', function() {
+      geocodeAddress(geocoder, map);
+      map.setZoom(12);  //zooms in on the requested city
+      //get dinamically from the API JS the resturants in the area
+      let city = document.getElementById('address').value;
+      loadCityCompanies(city);
+    });
 
 
   //takes the city selected in index.ejs and assigns it as the address
@@ -72,21 +71,6 @@ var infowindow;
     };  // startMarkers
 
 
-
-$(document).ready(function(){
-
-
-  geocodeAddressFirst(geocoder, map);
-
-  $('.submit').on('click', function() {
-    geocodeAddress(geocoder, map);
-    map.setZoom(12);  //zooms in on the requested city
-    //get dinamically from the API JS the resturants in the area
-    let city = document.getElementById('address').value;
-    loadCityCompanies(city);
-  });
-  // startMarkers();
-
     function loadCityCompanies(location) {
       console.log(location);
       $.ajax({
@@ -109,11 +93,8 @@ $(document).ready(function(){
     };
   });
 
-//   $('.submit').on('click', function() {
-//     geocodeAddress(geocoder, map);
-//     map.setZoom(12);  //zooms in on the requested city
-// $(document).ready(function(){
-//
-//   geocodeAddressFirst(geocoder, map);
-//
-// }); //document ready
+  $(document).ready(function(){
+    geocodeAddressFirst(geocoder, map);
+
+}); //document ready
+
