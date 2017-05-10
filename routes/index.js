@@ -36,19 +36,21 @@ router.route('/explore')
   })
 
   .post((req, res, next) => { //places the companies onto the map and for use on right-side bar
+    console.log(req.body);
     let location = [Number(req.body.longitude), Number(req.body.latitude)];
 
 	   const newCompany = {
       name:           req.body.name,
-      description:    req.body.description,
-      position:       req.body.position,
+      type:           req.body.type,
       city:           req.body.city,
+      description:    req.body.description,
+      webdeveloper:   req.body.webdeveloper,
+      mobiledeveloper: req.body.mobiledeveloper,
+      uxdeveloper:    req.body.uxdeveloper,
       coordinates:    location,
       icon:           req.body.icon,
-      type:           req.body.type,
       website:        req.body.website,
       details:        req.body.details
-
     };
 
   	const company = new Company(newCompany);
