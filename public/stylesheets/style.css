@@ -128,7 +128,7 @@ height: 100%;
 }
 
 .company-icons img {
-  max-width: 100%; 
+  max-width: 100%;
   height: auto;
 }
 
@@ -219,6 +219,10 @@ margin-right: 5%;
 
 .profile-footer > div{
   padding: 1% 5% 0;
+}
+
+.company-edit-form{
+  display: none;
 }
 
 .bio-section {

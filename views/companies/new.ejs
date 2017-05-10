@@ -30,30 +30,40 @@
         </div>
 				<div>
 					<label>What positions would you consider sponsoring a non-resident for? (Choose all that apply)</label>
-					<div class="btn-group" role="group" aria-label="...">
-						<h4> Junior-level</h4>
-					  <button id="junior-web" type="button" class="btn btn-default">Web Developer</button>
-					  <button id="junior-mobile" type="button" class="btn btn-default">Mobile Developer</button>
-					  <button id="junior-ux" type="button" class="btn btn-default">UX/UI Developer</button>
+
+						<h4> Web Developer</h4>
+						<select class="form-control" name="description" id="web-developer">
+		            <option value="JUNIOR-LEVEL">Junior Web Developer</option>
+		            <option value="MID-LEVEL">Mid-level Web Developer</option>
+								<option value="SENIOR-LEVEL">Senior Web Developer</option>
+								<option value="NONE">None</option>
+		        </select>
+
+
+						<h4> Mobile Developer</h4>
+						<select class="form-control" name="description" id="mobile-developer">
+		            <option value="JUNIOR-LEVEL">Junior Mobile Developer</option>
+		            <option value="MID-LEVEL">Mid-level Mobile Developer</option>
+								<option value="SENIOR-LEVEL">Senior Mobile Developer</option>
+								<option value="NONE">None</option>
+
+		        </select>
+
+						<h4> UX/UI Developer</h4>
+						<select class="form-control" name="description" id="ux-developer">
+		            <option value="JUNIOR-LEVEL">Junior UX/UI Designer</option>
+		            <option value="MID-LEVEL">Mid-level UX/UI Designer</option>
+								<option value="SENIOR-LEVEL">Senior UX/UI Designer</option>
+								<option value="NONE">None</option>
+
+		        </select>
 					</div>
-					<div class="btn-group" role="group" aria-label="...">
-						<h4> Mid-level</h4>
-					  <button id="mid-web" type="button" class="btn btn-default">Web Developer</button>
-					  <button id="mid-mobile" type="button" class="btn btn-default">Mobile Developer</button>
-					  <button id="mid-ux" type="button" class="btn btn-default">UX/UI Developer</button>
-					</div>
-					<div class="btn-group" role="group" aria-label="...">
-						<h4> Senior-level</h4>
-					  <button id="senior-web" type="button" class="btn btn-default">Web Developer</button>
-					  <button id="senior-mobile" type="button" class="btn btn-default">Mobile Developer</button>
-					  <button id="senior-ux" type="button" class="btn btn-default">UX/UI Developer</button>
-					</div>
-				</div>
+
 				<div class="form-group">
 					<label>What factors would influence your decision to consider sponsoring a non-resident worker?</label>
 					<input type="" class="form-control" name="description" placeholder="experience, languages, etc."><br>
 				</div>
-				
+
 				<div class="form-group">
 					<label>Coordinates:</label>
 		  		    <input id="new-latitude"  type="text" name="latitude" placeholder="Latitude" >
@@ -64,4 +74,3 @@
 		</div>
 	</div>
 </div>
-

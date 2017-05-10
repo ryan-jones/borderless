@@ -18,10 +18,6 @@ router.get('/', (req, res, next) => {
   })
 
 
-//test page
-router.get('/indeed', (req, res, next) => {
-    res.render('indeed');
-  })
 
 /* GET explore page. */
 router.route('/explore')
@@ -130,7 +126,7 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 
-router.get('/users/index/', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
+router.get('/users/index/', auth.checkLoggedIn('You must be logged in', '/login'), (req, res, next) => {
   if(req.user.role === "USER") {
       res.render('users/index', { user: JSON.stringify(req.user) });
   } else if (req.user.role === "COMPANY") {
@@ -140,7 +136,7 @@ router.get('/users/index/', auth.checkLoggedIn('You must be login', '/login'), (
     }
 });
 
-router.get('/new', auth.checkLoggedIn('You must be login', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
+router.get('/new', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
   res.render('companies/new', { user: JSON.stringify(req.user) });
 });
 
