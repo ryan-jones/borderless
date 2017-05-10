@@ -69,7 +69,8 @@ router.route('/explore')
 
 /* GET users listing. */
 router.get('/signup', function(req, res, next) {
-  res.render('auth/signup', { "message": req.flash("error") });
+  let role = req.query.role;
+  res.render('auth/signup', { "message": req.flash("error"), role });
 });
 
 router.post("/signup", (req, res, next) => {

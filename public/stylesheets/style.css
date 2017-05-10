@@ -124,7 +124,12 @@ height: 100%;
 
 .company {
   /*border: 1px solid white;*/
-  padding:5%;
+  padding:3%;
+}
+
+.company-icons img {
+  max-width: 100%; 
+  height: auto;
 }
 
 #address{

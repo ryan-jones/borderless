@@ -13,7 +13,7 @@ var infowindow;
         coordinates.push(longitude);
         map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: Number(coordinates[0]), lng: Number(coordinates[1])},
-        zoom: 8,
+        zoom: 12,
         });
         startMarkers();
         loadCityCompanies(landingAddress);
@@ -81,9 +81,10 @@ var infowindow;
           $('.company-list').html('');
           var companyContent = '';
           companies.forEach((company) => {
-            companyContent = `<div class="col-md-6 company">${company.name}</div>`;
+            companyContent = `<div class="col-md-6 company company-detail"><div class="col-md-3 company-icons"><img src=${company.icon}></div><div class="col-md-3">${company.name}<br>${company.type}</div></div>`;
             $('.company-list').append(companyContent);
-          })
+          }) 
+          
           console.log(companies);
       },
         error: function (err) {
@@ -91,6 +92,10 @@ var infowindow;
         }
       });
     };
+
+    $('.company-detail').on('click', function() {
+      window.open('http://localhost:3000/bla')
+    });
 
   $(document).ready(function(){
     geocodeAddressFirst(geocoder, map);
