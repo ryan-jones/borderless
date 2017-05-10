@@ -20,6 +20,8 @@ var api   = require('./routes/api');
 var app = express();
 
 mongoose.connect("mongodb://localhost:27017/borderless");
+// mongoose.connect('mongodb://heroku_klg4wkp7:ev9h5uksaeuuc3dhod8iqh6n7k@ds157500.mlab.com:57500/heroku_klg4wkp7');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
