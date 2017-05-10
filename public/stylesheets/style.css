@@ -88,7 +88,7 @@ margin-left: -3%;
 }
 
 .city-nav{
-  background-color: #e7e7e7;
+  background-color: #e3dfdf;
 }
 
 .sponsor{
@@ -158,15 +158,90 @@ margin-right: 5%;
 }
 
 .profile-left{
-  border: 1px solid white;
+  height: 100%;
+}
+
+.company-interest{
+  background-color: #fff;
+  height: 100vh;
+}
+.profile-right{
+  /*border: 1px solid red;*/
   height: 100%;
 }
 
 .image-div{
-  height: 20vh;
-  border: 1px solid yellow;
+  height: 40%;
+  /*border: 1px solid yellow;*/
+  background-color: #fff;
 }
-.profile-right{
-  border: 1px solid red;
+
+.image-div-left{
+  /*border: 1px solid blue;*/
   height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.profile-image{
+  /*border: 1px solid orange;*/
+  height: 100%;
+
+}
+
+.user-details {
+  /*border: 1px solid black;*/
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.image-div-right{
+  /*border: 1px solid green;*/
+  height: 100%;
+}
+
+#test-div{
+  height: 90%;
+}
+
+.profile-footer{
+  height: 10%;
+  display: flex;
+  flex-flow: row;
+  /*border: 1px solid red;*/
+}
+
+.profile-footer > div{
+  padding: 1% 5% 0;
+}
+
+.bio-section {
+  margin-top: 2%;
+  background-color: #fff;
+  /*border: 3px solid black;*/
+  height: 45%;
+}
+
+/*new company page*/
+
+.new-company{
+  color: black;
+  background-color: #fff;
+  height: 100vh;
+}
+.create-company{
+  height: 100%;
+  overflow-y:auto;
+
+}
+.geo-row{
+  height: 100%;
+}
+.map-row {
+  position: fixed;
+}
+#new-map{
+  position: fixed;
+  height: 90vh;
 }

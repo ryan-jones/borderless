@@ -1,14 +1,67 @@
-<h3>Add Company</h3>
-		<form method="POST" action="/">
-			<label>Name:</label>
-			<input type="" name="name" placeholder="Name"><br>
-			<label>Description:</label>
-			<input type="" name="description" placeholder="Description"><br>
-            <label>City:</label>
-			<input type="" name="city" placeholder="CityName"><br>
-			<label>Coordinates:</label>
-  		    <input type="text" name="latitude" placeholder="Latitude" >
- 			<input type="text" name="longitude" placeholder="Longitude"><br>
+<div class="container-fluid new-company">
+	<div class="row geo-row">
+		<div class="col-md-5 map-row">
+			<h4>Enter your address</h4>
+			<input id="new-address" type="" name="address" placeholder="address">
+			<input id="new-submit" type="submit" name="" value="Geocode">
+			<div id="new-map"> </div>
+		</div>
+		<div class="col-md-7 create-company">
+			<h4> Add your company</h4>
+			<form method="POST" action="/explore">
+				<div class="form-group">
+					<label>Name of Company:</label>
+					<input type="" class="form-control" name="name" placeholder="Name"><br>
+				</div>
+				<div class="form-group">
+					<label>Industry</label>
+					<input type="" class="form-control" name="type" placeholder="saas, health, ecommerce, etc."><br>
+				</div>
+				<div class="form-group">
+					<label>City:</label>
+					<input type="" class="form-control" name="city" placeholder="City name"><br>
+				</div>
+				<div class="form-group">
+					<label>Are you willing to consider sponsoring a non-resident worker?:</label>
+	        <select class="form-control" name="description" id="yes-no">
+	            <option value="yes">Yes</option>
+	            <option value="no">No</option>
+	        </select>
+        </div>
+				<div>
+					<label>What positions would you consider sponsoring a non-resident for? (Choose all that apply)</label>
+					<div class="btn-group" role="group" aria-label="...">
+						<h4> Junior-level</h4>
+					  <button id="junior-web" type="button" class="btn btn-default">Web Developer</button>
+					  <button id="junior-mobile" type="button" class="btn btn-default">Mobile Developer</button>
+					  <button id="junior-ux" type="button" class="btn btn-default">UX/UI Developer</button>
+					</div>
+					<div class="btn-group" role="group" aria-label="...">
+						<h4> Mid-level</h4>
+					  <button id="mid-web" type="button" class="btn btn-default">Web Developer</button>
+					  <button id="mid-mobile" type="button" class="btn btn-default">Mobile Developer</button>
+					  <button id="mid-ux" type="button" class="btn btn-default">UX/UI Developer</button>
+					</div>
+					<div class="btn-group" role="group" aria-label="...">
+						<h4> Senior-level</h4>
+					  <button id="senior-web" type="button" class="btn btn-default">Web Developer</button>
+					  <button id="senior-mobile" type="button" class="btn btn-default">Mobile Developer</button>
+					  <button id="senior-ux" type="button" class="btn btn-default">UX/UI Developer</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>What factors would influence your decision to consider sponsoring a non-resident worker?</label>
+					<input type="" class="form-control" name="description" placeholder="experience, languages, etc."><br>
+				</div>
+				
+				<div class="form-group">
+					<label>Coordinates:</label>
+		  		    <input id="new-latitude"  type="text" name="latitude" placeholder="Latitude" >
+		 			<input id= "new-longitude"   type="text" name="longitude" placeholder="Longitude"><br>
+				</div>
+				<input type="submit" name="">
+			</form>
+		</div>
+	</div>
 
-			<input type="submit" name="">
-		</form>
+</div>
