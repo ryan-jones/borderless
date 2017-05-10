@@ -22,6 +22,7 @@ var infowindow;
     });
   }
 
+
     $('.submit').on('click', function() {
       geocodeAddress(geocoder, map);
       map.setZoom(12);  //zooms in on the requested city
@@ -29,6 +30,7 @@ var infowindow;
       let city = document.getElementById('address').value;
       loadCityCompanies(city);
     });
+
 
   //takes the city selected in index.ejs and assigns it as the address
     function geocodeAddress(geocoder, resultsMap) {
@@ -70,27 +72,29 @@ var infowindow;
 
 
     function loadCityCompanies(location) {
-    console.log(location);
-    $.ajax({
-      
-      url: "http://localhost:3000/api?location=" + location,
-      method: 'GET',
-      success: function(companies) {
-        $('.company-list').html('');
-        var companyContent = '';
-        companies.forEach((company) => {
-          companyContent = `<div class="col-md-6 company">${company.name}</div>`;
-          $('.company-list').append(companyContent);
-        })
-        console.log(companies);
-    },
-      error: function (err) {
-      console.log(err);
-      }
-    });
+      console.log(location);
+      $.ajax({
+
+        url: "http://localhost:3000/api?location=" + location,
+        method: 'GET',
+        success: function(companies) {
+          $('.company-list').html('');
+          var companyContent = '';
+          companies.forEach((company) => {
+            companyContent = `<div class="col-md-6 company">${company.name}</div>`;
+            $('.company-list').append(companyContent);
+          })
+          console.log(companies);
+      },
+        error: function (err) {
+        console.log(err);
+        }
+      });
     };
+  });
 
   $(document).ready(function(){
     geocodeAddressFirst(geocoder, map);
 
 }); //document ready
+
