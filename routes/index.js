@@ -121,7 +121,7 @@ router.post("/login", passport.authenticate("local", {
 router.get('/users/index/', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
   if(req.user.role === "USER") {
       res.render('users/index', { user: JSON.stringify(req.user) });
-  } else if (eq.user.role === "COMPANY") {
+  } else if (req.user.role === "COMPANY") {
       res.render('companies/index', { user: JSON.stringify(req.user) });
   } else {
       res.render('admin/index', { user: JSON.stringify(req.user) });
