@@ -3,11 +3,13 @@ const bcrypt   = require("bcrypt");
 const Company = require('../models/company');
 const User     = require("../models/user");
 const passport = require("../helpers/passport");
+const Picture = require('../models/pictures');
 const bcryptSalt = 10;
 var auth    = require('../helpers/auth');
 const flash          = require("connect-flash");
 
 var router = express.Router();
+var multer  = require('multer');
 
 
 
@@ -152,7 +154,24 @@ router.get("/logout", (req, res) => {
 });
 
 
-router.get('/test', (req, res, next) =>{
-  res.render('test');
+// Route to upload photos from project base path
+var upload = multer({ dest: './public/uploads/' , limits: {fileSize: 5000000, files:1}, });
+
+router.post('/upload', upload.single('photo'), function(req, res){
+
+  pic = new Picture({
+    name: req.body.name,
+    pic_path: `/uploads/${req.file.filename}`,
+    pic_name: req.file.originalname
+  });
+
+  pic.save((err) => {
+      res.redirect('/users');
+  });
 });
+
+
+
+
+
 module.exports = router;

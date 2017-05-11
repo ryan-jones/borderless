@@ -3,7 +3,7 @@ body {
   padding: 50px 0 0 0 ;
   position: relative;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #191970;
+  background-color: #63171A;
   margin: 0;
 }
 
@@ -21,56 +21,76 @@ select {
 }
 
 .container-fluid{
-  background-color: #191970;
+  background-color: #4A0D0F;
 }
 
 .white, .caret {
   color: white;
 }
 
+#headline{
+    font-family: 'Orbitron', sans-serif;
+}
+
 .navbar-right{
   padding-right: 2%;
 }
 
+.landing-link{
+  background-color: #4A0D0F !important;
+  color: #fff !important;
+}
+
 /*landing page*/
+
+#borderless{
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20vh;
+}
 
 .landing-page {
   text-align: center;
-
   height: 800px;
   background-color: #191970;
 }
 
 .background-image {
-  background-image: url("https://img.washingtonpost.com/wp-apps/imrs.php?src=https://img.washingtonpost.com/blogs/wonkblog/files/2014/07/Screen-Shot-2014-07-17-at-1.24.19-PM.png&w=1484");
-  max-height: 60%;
+  background-image: url("../images/sunrise.jpeg");
+  /*background-position: left bottom;*/
+  background-size:cover;
+  height: 100%;
+  width: auto;
+
   color: #FFF;
 }
 
 .landing-header {
-  margin: 10% 0;
-
+  margin: 7% 0 10%;
 }
 
 .landing-login {
-  margin-top: 15%;
-  background-color: #FFF;
+  margin-top: 13%;
+  /*background-color: #FFF;*/
   color: black;
   padding: 2% 0;
 }
 
-/*explore page*/
+#slogan{
+  margin-top: 2%;
+}
+
+/*explore page******************/
 #parent {
   height: 100vh;
   width: inherit;
   background-color: black;
-  border: 2px solid black;
+
 
 }
 #map {
 height: 100%;
-width: 106%;
-margin-left: -3%;
+width: 104%;
+margin-left: -1%;
 }
 
 #left-side {
@@ -96,8 +116,16 @@ text-align: center;
 /*position: fixed;*/
 }
 
+.input-group-addon{
+  margin: 0 !important;
+  border: 1px solid black;
+  height: 20px;
+}
+
+
 .city-choice{
 display: inline-block;
+margin-bottom: -1%;
 padding: 2% 0;
 background-color: #708090;
 text-align: center;
@@ -147,12 +175,6 @@ padding: 2.5%;
 margin-right: 5%;
 }
 
-/*.prevent-overlap{
-  height: 80px;
-  z-index: 100;
-
-  background-color: red;
-}*/
 
 /*dashboards for user and company*******************/
 

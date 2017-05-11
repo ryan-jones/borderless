@@ -4,35 +4,48 @@
 
     <section class="landing-header">
       <div class="row">
-          <h1>Borderless</h1>
+          <h1 id="borderless">Borderless</h1>
       </div>
       <div class="row">
           <h2>Find your sponsor. Find your rockstar.</h2>
       </div>
 
-      <div class="row landing-login">
+      <div class="row landing-login" >
         <div class="col-md-1"></div>
-        <div class="col-md-5">
 
+        <div class="col-md-3 " id="signup">
           <div class="signup-link">
-            <div id="sigup"><a class="btn btn-default navbar-btn" href="/signup">Sign up</a></div>
+            <div id="sigup"><a class="form-control landing-link" href="/signup">Sign up</a></div>
           </div>
-        </div>
+        </div> <!-- signup-->
 
-        <div class="col-md-5">
-          <div class="city-choice">
-            <select name="city" id="city" class="form-control dropdown">
+
+
+        <div class="col-md-4" id="dropdown">
+          <div class="input-group ">
+            <select name="city" id="city" class="form-control dropdown landing-link">
+               <option value="barcelona"> Search for Sponsors  </option>
                <option value="barcelona"> Barcelona  </option>
                <option value="madrid"> Madrid </option>
                <option value="paris"> Paris </option>
                <option value="miami"> Miami </option>
             </select>
-            <button id="test" class="submit"> Find sponsors </button>
+            <span class="input-group-btn">
+              <button class="btn btn-default"  id="test" type="button"> Search</button>
+            </span>
+          </div><!-- /input-group -->
+        </div>
+
+        <div class="col-md-3 " id="create">
+          <div class="signup-link">
+            <div id="create-link" class="landing-link"><a class="form-control landing-link" href="/new">Add your company</a></div>
           </div>
         </div>
+
+
         <div class="col-md-1"></div>
 
-      </div>
+      </div> <!-- landing login-->
 
     </section>
   </div> <!-- background image -->

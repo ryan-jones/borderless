@@ -79,10 +79,10 @@ var infowindow;
           $('.company-list').html('');
           var companyContent = '';
           companies.forEach((company) => {
-            companyContent = `<div class="col-md-6 company company-detail"><div class="col-md-3 company-icons"><img src=${company.icon}></div><div class="col-md-3">${company.name}<br>${company.type}</div></div>`;
+            companyContent = `<div class="col-md-6 company company-detail" id="${company._id}"><div class="col-md-3 company-icons"><img src=${company.icon}></div><div class="col-md-3">${company.name}<br>${company.type}</div></div>`;
             $('.company-list').append(companyContent);
-          }) 
-          
+          })
+
           console.log(companies);
       },
         error: function (err) {
@@ -99,4 +99,3 @@ var infowindow;
     geocodeAddressFirst(geocoder, map);
 
 }); //document ready
-
