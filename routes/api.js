@@ -8,19 +8,17 @@ router.route('/')
         let location = req.query.location;
 				let type = req.query.position;
 				let level =req.query.level;
+				var description = req.query.description;
 
-				var types
+
+
+
 				var levels = ["JUNIOR", 'MID-LEVEL', 'SENIOR-LEVEL']
 				var levelIndex = levels.indexOf(level)
 
 				var allSelectedLevels = levels.filter((level, index)=>{
 					return index >= levelIndex
 				})
-
-				console.log(allSelectedLevels)
-
-				console.log(type);
-				console.log(level);
         location = location.split("").map((char, index)=> index == 0? char.toUpperCase() : char).join("")
 	  Company.find({city: location, [type]: { $in: allSelectedLevels }}, (error, companies) => {
 	  	if (error) {
