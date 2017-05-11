@@ -128,4 +128,3 @@ var infowindow;
     geocodeAddressFirst(geocoder, map);
 
 }); //document ready
-
