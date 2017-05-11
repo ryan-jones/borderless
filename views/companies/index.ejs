@@ -35,7 +35,10 @@
           </div>
           <div class="col-md-6 image-div-right">
             <div>
-              <button id="company-profile-edit"> Edit Profile</button>
+              <div id="edit-company-profile"><a class="btn btn-default navbar-btn" href="/<%=user._id%>/edit">Edit User Profile</a></div></li>
+            </div>
+            <div>
+            <div id="edit-company-profile"><a class="btn btn-default navbar-btn" href="/company/<%=user.companyid%>/edit">Edit Company Profile</a></div></li>
             </div>
           </div>
         </div>
@@ -59,3 +62,4 @@
     </div> <!-- profile-right -->
   </div>
 </div>
+ <script type="text/javascript" src="/javascripts/index.js"></script>

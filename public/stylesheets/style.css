@@ -254,3 +254,7 @@ margin-right: 5%;
   position: fixed;
   height: 90vh;
 }
+
+#hide-company {
+  display: none;
+}

@@ -70,7 +70,6 @@ var infowindow;
 
 
     function loadCityCompanies(location) {
-      console.log(location);
       $.ajax({
 
         url: "http://localhost:3000/api?location=" + location,
@@ -79,11 +78,9 @@ var infowindow;
           $('.company-list').html('');
           var companyContent = '';
           companies.forEach((company) => {
-            companyContent = `<div class="col-md-6 company company-detail"><div class="col-md-3 company-icons"><img src=${company.icon}></div><div class="col-md-3">${company.name}<br>${company.type}</div></div>`;
+            companyContent = `<div class="col-md-6 company company-detail" id="${company._id}"><div class="col-md-3 company-icons"><img src=${company.icon}></div><div class="col-md-3">${company.name}<br>${company.type}</div><button id="${company._id}" class="button-id">Details</button></div>`;
             $('.company-list').append(companyContent);
           }) 
-          
-          console.log(companies);
       },
         error: function (err) {
         console.log(err);
@@ -91,9 +88,41 @@ var infowindow;
       });
     };
 
-    $('.company-detail').on('click', function() {
-      window.open('http://localhost:3000/bla')
-    });
+    // $('.button-id').click( function() {
+    //   console.log('bla');
+    //   var tempDiv = $(this).attr('id');
+    //   console.log(tempDiv);
+    //   showCompanyDetail(tempDiv);
+    //   return false;
+    //   $('#parent').toggle();
+    //   $('#hide-company').toggle();
+    // });
+
+    // $('#hide-company').click(function(){
+    //   $('#parent').toggle();
+    //   $('#hide-company').toggle();
+    // });
+
+    // function showCompanyDetail(companyId) {
+    //   console.log(companyId);
+    //   $.ajax({
+
+    //     url: "http://localhost:3000/api/company/?companyId=" + companyId,
+    //     method: 'GET',
+    //     success: function(company) {
+    //       $('#hide-company').html('');
+    //       var companyDetail = `<div class="col-md-6 company company-detail"><div class="col-md-3 company-icons"><img src=${company.icon}></div><div class="col-md-3">${company.name}<br>${company.type}</div></div>`;
+    //         $('#hide-company').append(companyDetail);
+    //       console.log(company);
+    //     },
+    //     error: function (err) {
+    //     console.log(err);
+    //     }, 
+    //   });
+    // };
+
+          
+      
 
   $(document).ready(function(){
     geocodeAddressFirst(geocoder, map);

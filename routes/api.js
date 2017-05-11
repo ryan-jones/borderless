@@ -18,4 +18,19 @@ router.route('/')
 	  })
 	});
 
+router.route('/company/:company_id')
+	.get((req, res) => {
+        let companyId = req.query.companyId;
+        console.log('thisis company', companyId);
+	  	Company.findOne({ _id: companyId}, (error, company) => {
+	  	if (error) {
+	  		res.status(500).json({message: error});
+	  	} else {
+              console.log(company)
+	  		res.status(200).json(company);
+	  	}
+	  })
+	});
+
+
 module.exports = router;

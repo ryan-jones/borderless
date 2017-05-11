@@ -37,6 +37,9 @@ router.route('/explore')
 
   .post((req, res, next) => { //places the companies onto the map and for use on right-side bar
     console.log(req.body);
+    console.log(req.session);
+    var currentUser = req.session.passport.user._id;
+    
     let location = [Number(req.body.longitude), Number(req.body.latitude)];
 
 	   const newCompany = {
@@ -50,16 +53,23 @@ router.route('/explore')
       coordinates:    location,
       icon:           req.body.icon,
       website:        req.body.website,
-      details:        req.body.details
+      details:        req.body.details,
+      userid:         currentUser,
     };
 
   	const company = new Company(newCompany);
 
-  	company.save((error) => {
-  		if (error) {
+  	company.save((error, company) => {
+      if (error) {
   			next(error);
   		} else {
-  			res.redirect('/explore');
+        User.findByIdAndUpdate({_id: currentUser}, {companyid: company._id}, (err) => {
+          if (err) {
+            next(err);
+          } else {
+            res.redirect('/users/index/');
+          }
+        })
   		}
   	})
   });
@@ -132,7 +142,7 @@ router.get('/users/index/', auth.checkLoggedIn('You must be logged in', '/login'
   if(req.user.role === "USER") {
       res.render('users/index', { user: JSON.stringify(req.user) });
   } else if (req.user.role === "COMPANY") {
-      res.render('companies/index', { user: JSON.stringify(req.user) });
+      res.render('companies/index', { user: req.user});
   } else {
       res.render('admin/index', { user: JSON.stringify(req.user) });
     }
@@ -140,6 +150,17 @@ router.get('/users/index/', auth.checkLoggedIn('You must be logged in', '/login'
 
 router.get('/new', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
   res.render('companies/new', { user: JSON.stringify(req.user) });
+});
+
+router.get('/company/:id/edit', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
+  Company.findById({_id: req.user.companyid}, (err, company) => {
+	  	if (err) {
+	  		next(err);
+          } else {
+            console.log('dentro de company edit router', company);
+      res.render('companies/update', {company});
+          }}
+  )
 });
 
 router.get("/logout", (req, res) => {
