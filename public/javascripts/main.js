@@ -9,9 +9,7 @@ var type = [];
 var level = [];
 var markers = [];
 
-
-
-
+infowindow = new google.maps.InfoWindow();
 
 
 //loads all of the markers on to the map
@@ -19,7 +17,17 @@ var markers = [];
     markers = [];
     locations.forEach(function(companies){
       map = map;
+      let companyId = companies._id;
       let title = companies.name;
+      let type = companies.type;
+      let picture = companies.icon;
+      let description = companies.description;
+      let details = companies.details;
+      let website = companies.website;
+      let web = companies.webdeveloper;
+      let mobile = companies.mobiledeveloper;
+      let ux = companies.uxdeveloper;
+      console.log('title', title);
       let position = {
         lat: companies.coordinates[1],
         lng: companies.coordinates[0]
@@ -31,28 +39,19 @@ var markers = [];
         icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
       }
 
-      let companyId = companies._id;
-      let title = companies.name;
-      let type = companies.type;
-      let picture = companies.icon;
-      let description = companies.description;
-      let details = companies.details;
-      let website = companies.website;
-      let web = companies.webdeveloper;
-      let mobile = companies.mobiledeveloper;
-      let ux = companies.uxdeveloper;
-
       var pin = new google.maps.Marker({icon, position, map, title, type, description, details, website, web, mobile, ux, companyId});
       markers.push(pin);
 
       google.maps.event.addListener(pin, 'click', function(){
-        infowindow.setContent('<div><h3> Name:' + company.name + '</h3></div><div><p><strong>Industry: </strong>' + company.type + '</p></div><div><p><strong>Willing to sponsor: </strong>' + company.description + '</p></div><div><p><strong>Additional Criteria for consideration: </strong>' + company.details + '</p></div><div><p><strong>Website: </strong>' + company.website + '</p></div>');
+        infowindow.setContent('<section class="marker-text"><div><h3> Name:' + companies.name + '</h3></div><div><p><strong>Industry: </strong>' + companies.type + '</p></div><div><p><strong>Willing to sponsor: </strong>' + companies.description + '</p></div><div><p><strong>Additional Criteria for consideration: </strong>' + companies.details + '</p></div><div><p><strong>Website: </strong>' + companies.website + '</p></div></section');
         infowindow.open(map, this);
         console.log(infowindow);
+      })
 
+      companyContent = `<div class="col-md-6 company company-detail" id="${companies._id}"><div class="col-md-3 company-icons"><img src=${companies.icon}></div><div class="col-md-3">${companies.name}<br>${companies.type}</div></div>`;
+      $('.company-list').append(companyContent);
       }); // locations.forEach
-    });
-  };  // startMarkers
+    }; // startMarkers
 
 
 
@@ -108,11 +107,9 @@ var markers = [];
         console.log('index 0', arr[0], 'index 1', arr[1]);
       });
 
-    $('.radio').on('click', function(e){
-      description = e.target.defaultValue;
-    })
 
-infowindow = new google.maps.InfoWindow();
+
+
 
 //dynamically loads company divs on explore.ejs based on city location selected
     function loadCityCompanies(location) {
@@ -159,7 +156,7 @@ infowindow = new google.maps.InfoWindow();
               console.log(infowindow);
             })
 
-            companyContent = `<div class="col-md-6 company company-detail" id="${company._id}"><div class="col-md-3 company-icons"><img src=${company.icon}></div><div class="col-md-3">${company.name}<br>${company.type}</div></div>`;
+            companyContent = `<div class="col-md-12 company company-detail" id="${company._id}"><div class="col-md-12"><h4><strong>${company.name}</strong></h4><br>${company.type}</div></div>`;
             $('.company-list').append(companyContent);
           })
 
