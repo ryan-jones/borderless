@@ -155,15 +155,104 @@ router.get('/new', auth.checkLoggedIn('You must be logged in', '/login'), auth.c
 });
 
 router.get('/company/:id/edit', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
+  console.log(req.user);
   Company.findById({_id: req.user.companyid}, (err, company) => {
 	  	if (err) {
 	  		next(err);
           } else {
             console.log('dentro de company edit router', company);
-      res.render('companies/update', {company});
+        res.render('companies/update', {company});
           }}
   )
 });
+
+router.post('/company/:id/edit', (req, res, next) => {
+  console.log('dentro de post en routes', req.body);
+		Company.findById({_id: req.user.companyid}, (error, company) => {
+      var currentUser = req.session.passport.user._id;
+			let location = [Number(req.body.longitude), Number(req.body.latitude)];
+      if (err) {
+				next(err);
+			} else {
+				company.name =            req.body.name,
+        company.type =            req.body.type,
+        company.city =            req.body.city,
+        company.description =     req.body.description,
+        company.webdeveloper =    req.body.webdeveloper,
+        company.mobiledeveloper = req.body.mobiledeveloper,
+        company.uxdeveloper =     req.body.uxdeveloper,
+        company.coordinates =     location,
+        company.icon =            req.body.icon,
+        company.website =         req.body.website,
+        company.details =         req.body.details,
+        company.userid =          currentUser,
+				company.save((err) => {
+		  		if (err) {
+		  			next(err);
+		  		} else {
+		  			res.redirect('/users/index');
+		  		}
+		  	})
+			}
+		})
+	});
+
+router.route('/company/:id/delete')
+	.get((req, res, next) => {
+		Company.remove({ _id: req.user.companyid }, function(err, company) {
+	    if (err) {
+	    	next(err)
+	    } else {
+        req.user.companyid = null;
+	    	res.redirect('/users/index');
+	    }
+    });
+	});
+
+router.get('/:id/edit', auth.checkLoggedIn('You must be logged in', '/login'), (req, res, next) => {
+  User.findById({_id: req.user._id}, (err, user) => {
+	  	if (err) {
+	  		next(err);
+          } else {
+        res.render('auth/update', {user});
+          }}
+  )
+});
+
+router.post('/:id/edit', (req, res, next) => {
+  console.log('dentro de post en routes', req.body);
+    let password = req.body.password;
+    let salt     = bcrypt.genSaltSync(bcryptSalt);
+    let hashPass = bcrypt.hashSync(password, salt);
+		User.findById({_id: req.user._id}, (err, user) => {
+      var currentUser = req.session.passport.user._id;
+      if (err) {
+				next(err);
+			} else {
+        user.name =               req.body.name,
+        user.password =           hashPass,
+        user.nationality =        req.body.nationality,
+				user.save((err) => {
+		  		if (err) {
+		  			next(err);
+		  		} else {
+		  			res.redirect('/users/index');
+		  		}
+		  	})
+			}
+		})
+	});
+
+router.route('/:id/delete')
+	.get((req, res, next) => {
+		User.remove({ _id: req.user._id }, function(err, user) {
+	    if (err) {
+	    	next(err)
+	    } else {
+	    	res.redirect('/');
+	    }
+    });
+	});
 
 router.get("/logout", (req, res) => {
   req.logout();
