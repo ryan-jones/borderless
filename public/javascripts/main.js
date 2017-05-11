@@ -113,7 +113,6 @@ infowindow = new google.maps.InfoWindow();
 
 //dynamically loads company divs on explore.ejs based on city location selected
     function loadCityCompanies(location) {
-
       $.ajax({
 
         url: "http://localhost:3000/api?location=" + location + "&position=" + type + "&level=" +level,
@@ -161,14 +160,12 @@ infowindow = new google.maps.InfoWindow();
           })
 
         },
+
         error: function (err) {
         console.log(err);
         }
       });
   }; //loadCityCompanies
-
-
-
 
   function setMapOnAll(map) {
     for (var i = 0; i < markers.length; i++) {

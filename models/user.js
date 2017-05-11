@@ -11,8 +11,7 @@ const userSchema = new Schema({
   username: String,
   password: String,
   nationality: String,
-  position: String,
-  location: String,
+  companyid: { type: Schema.Types.ObjectId, ref: 'Company' }
 	}, {
   	timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 	}
