@@ -3,11 +3,13 @@ const bcrypt   = require("bcrypt");
 const Company = require('../models/company');
 const User     = require("../models/user");
 const passport = require("../helpers/passport");
+const Picture = require('../models/pictures');
 const bcryptSalt = 10;
 var auth    = require('../helpers/auth');
 const flash          = require("connect-flash");
 
 var router = express.Router();
+var multer  = require('multer');
 
 
 
@@ -36,19 +38,21 @@ router.route('/explore')
   })
 
   .post((req, res, next) => { //places the companies onto the map and for use on right-side bar
+    console.log(req.body);
     let location = [Number(req.body.longitude), Number(req.body.latitude)];
 
 	   const newCompany = {
       name:           req.body.name,
-      description:    req.body.description,
-      position:       req.body.position,
+      type:           req.body.type,
       city:           req.body.city,
+      description:    req.body.description,
+      webdeveloper:   req.body.webdeveloper,
+      mobiledeveloper: req.body.mobiledeveloper,
+      uxdeveloper:    req.body.uxdeveloper,
       coordinates:    location,
       icon:           req.body.icon,
-      type:           req.body.type,
       website:        req.body.website,
       details:        req.body.details
-
     };
 
   	const company = new Company(newCompany);
@@ -150,7 +154,24 @@ router.get("/logout", (req, res) => {
 });
 
 
-router.get('/test', (req, res, next) =>{
-  res.render('test');
+// Route to upload photos from project base path
+var upload = multer({ dest: './public/uploads/' , limits: {fileSize: 5000000, files:1}, });
+
+router.post('/upload', upload.single('photo'), function(req, res){
+
+  pic = new Picture({
+    name: req.body.name,
+    pic_path: `/uploads/${req.file.filename}`,
+    pic_name: req.file.originalname
+  });
+
+  pic.save((err) => {
+      res.redirect('/users');
+  });
 });
+
+
+
+
+
 module.exports = router;

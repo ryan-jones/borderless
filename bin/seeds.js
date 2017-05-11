@@ -13,7 +13,6 @@ let companies = [
  uxdeveloper: 'SENIOR-LEVEL',
  coordinates: [2.1833513, 41.38065],
  icon: 'https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAPqAAAAJGIwZmFhMjgzLWVlNDMtNDBlMi1hMjg3LTM3MDA4YzBmZDlkMA.png',
- 
  website: 'https://www.tiendeo.com/',
  details: 'Perfil adecuado para Tiendeo, por experiencia, formación, competencias y habilidades, conocimientos de la tecnologías, superación de pruebas específicas.'
 },

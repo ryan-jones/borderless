@@ -58,9 +58,7 @@ var infowindow;
         };
         var icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
 
-        if(companies.description === "maybe"){
-          icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
-        } else if (companies.description === "yes") {
+        if (companies.description === "YES") {
           icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
         }
 
@@ -82,7 +80,7 @@ var infowindow;
           $('.company-list').html('');
           var companyContent = '';
           companies.forEach((company) => {
-            companyContent = `<div class="col-md-6 company company-detail"><div class="col-md-3 company-icons"><img src=${company.icon}></div><div class="col-md-3">${company.name}<br>${company.type}</div></div>`;
+            companyContent = `<div class="col-md-6 company company-detail" id="${company._id}"><div class="col-md-3 company-icons"><img src=${company.icon}></div><div class="col-md-3">${company.name}<br>${company.type}</div></div>`;
             $('.company-list').append(companyContent);
           })
 
