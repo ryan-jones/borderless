@@ -25,7 +25,7 @@ router.get('/', (req, res, next) => {
 router.route('/explore')
   .get((req, res, next) => {
     let city = req.query.city;
-    Company.find({},{_id: 0} ,(err, companies)=>{  //if _id: 0, the data excludes all _id values, if _id: 1, then it exclusively returns only _ids
+    Company.find({},{_id: 0, userid: 0} ,(err, companies)=>{  //if _id: 0, the data excludes all _id values, if _id: 1, then it exclusively returns only _ids
       if (err){
         res.render('explore');
       } else {
