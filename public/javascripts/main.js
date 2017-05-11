@@ -3,6 +3,9 @@ var geocoder = new google.maps.Geocoder();
 var coordinates= [];
 var landingAddress = cities;
 var infowindow;
+var arr = ''
+var type = [];
+var level = [];
 
 //defines the initial centering of the map on explore.ejs based on selected city from landing page
   function geocodeAddressFirst(geocoder, resultsMap) {
@@ -37,7 +40,6 @@ var infowindow;
       let address = document.getElementById('address').value;
       geocoder.geocode({'address': address}, function(results, status) {
         if (status === 'OK') {
-          console.log(resultsMap);
           resultsMap.setCenter(results[0].geometry.location);
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
@@ -69,37 +71,44 @@ var infowindow;
     };  // startMarkers
 
 
+
+//************ Selector for sponsors by position *************** //
+
+    $('.checkbox').on('change', function(e) {
+          arr = e.target.defaultValue.split(" ");
+          type = arr[0];
+          level = arr[1];
+          console.log('index 0', arr[0], 'index 1', arr[1]);
+    });
+
 //dynamically loads company divs on explore.ejs based on city location selected
     function loadCityCompanies(location) {
-      console.log(location);
+
+      console.log(location , type, level);
+
       $.ajax({
 
-        url: "http://localhost:3000/api?location=" + location,
+        url: "http://localhost:3000/api?location=" + location + "&position=" + type + "&level=" +level,
         method: 'GET',
         success: function(companies) {
+          startMarkers(companies);
           $('.company-list').html('');
           var companyContent = '';
           companies.forEach((company) => {
             companyContent = `<div class="col-md-6 company company-detail" id="${company._id}"><div class="col-md-3 company-icons"><img src=${company.icon}></div><div class="col-md-3">${company.name}<br>${company.type}</div></div>`;
             $('.company-list').append(companyContent);
           })
-
-          console.log(companies);
       },
         error: function (err) {
         console.log(err);
         }
       });
+        console.log('after ajax', location , type, level);
     };
 
-
-    //************ Selector for sponsors by position *************** //
-
-    
-
-    $('.company-detail').on('click', function() {
-      window.open('http://localhost:3000/bla')
-    });
+    // $('.company-detail').on('click', function() {
+    //   window.open('http://localhost:3000/bla')
+    // });
 
   $(document).ready(function(){
     geocodeAddressFirst(geocoder, map);
