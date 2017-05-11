@@ -24,6 +24,11 @@ select {
   background-color: #4A0D0F;
 }
 
+.container{
+  background-color: #4A0D0F;
+  height: 100vh;
+}
+
 .white, .caret {
   color: white;
 }
@@ -280,3 +285,4 @@ margin-right: 5%;
 #hide-company {
   display: none;
 }
+

@@ -142,15 +142,15 @@ router.post("/login", passport.authenticate("local", {
 
 router.get('/users/index/', auth.checkLoggedIn('You must be logged in', '/login'), (req, res, next) => {
   if(req.user.role === "USER") {
-      res.render('users/index', { user: JSON.stringify(req.user) });
+      res.render('users/index', { user: req.user});
   } else if (req.user.role === "COMPANY") {
       res.render('companies/index', { user: req.user});
   } else {
-      res.render('admin/index', { user: JSON.stringify(req.user) });
+      res.render('admin/index', { user: req.user });
     }
 });
 
-router.get('/new', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
+router.get('/company/new', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
   res.render('companies/new', { user: JSON.stringify(req.user) });
 });
 

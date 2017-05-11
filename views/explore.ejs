@@ -1,109 +1,115 @@
+<div class="row" id="parent">
+  <div class="col-md-6" id="left-side">
 
+    <div id="map"> </div>
+    <!--  beginning of google map view -->
+    <div id="click-info"></div>
+  </div>
+  <!-- end of google mape view -->
 
-
-   <div class="row" id="parent">
-       <div class="col-md-6" id="left-side">
-
-           <div id="map"> </div>        <!--  beginning of google map view -->
-           <div id="click-info"></div>
-         </div> <!-- end of google mape view -->
-
-       <div class="col-md-6" id="right-side">  <!-- company list view -->
-           <div class="row city-nav sponsor">
-               <h2> Find a sponsor </h2>
-               <div class="row">
-                 <div class="col-md-4">
-                   <h4>Web Developer</h4>
-                   <div class="select-column">
-                     <div>
-                       <span class="input-group-addon">
+  <div class="col-md-6" id="right-side">
+    <!-- company list view -->
+    <div class="row city-nav sponsor">
+      <h2> Find a sponsor </h2>
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Web Developer</h4>
+          <div class="select-column">
+            <div>
+              <span class="input-group-addon">
                          <input class="checkbox" type="checkbox" aria-label="..."> Junior
                        </span>
-                     </div>
-                    <div>
-                      <span class="input-group-addon">
+            </div>
+            <div>
+              <span class="input-group-addon">
                         <input class="checkbox" type="checkbox" aria-label="..."> Mid-level
                       </span>
-                    </div>
-                    <div>
-                      <span class="input-group-addon">
+            </div>
+            <div>
+              <span class="input-group-addon">
                         <input class="checkbox" type="checkbox" aria-label="..."> Senior
                       </span>
-                    </div>
-                    </div><!-- /input-group -->
-                 </div>
-                 <div class="col-md-4">
-                   <h4>Mobile Developer</h4>
-                   <div class="select-column">
-                     <div>
-                       <span class="input-group-addon">
+            </div>
+          </div>
+          <!-- /input-group -->
+        </div>
+        <div class="col-md-4">
+          <h4>Mobile Developer</h4>
+          <div class="select-column">
+            <div>
+              <span class="input-group-addon">
                          <input class="checkbox" type="checkbox" aria-label="..."> Junior
                        </span>
-                     </div>
-                    <div>
-                      <span class="input-group-addon">
+            </div>
+            <div>
+              <span class="input-group-addon">
                         <input class="checkbox" type="checkbox" aria-label="..."> Mid-level
                       </span>
-                    </div>
-                    <div>
-                      <span class="input-group-addon">
+            </div>
+            <div>
+              <span class="input-group-addon">
                         <input class="checkbox" type="checkbox" aria-label="..."> Senior
                       </span>
-                    </div>
-                    </div><!-- /input-group -->
-                 </div>
-                 <div class="col-md-4">
-                   <h4>UX/UI Developer</h4>
-                   <div class="select-column">
-                     <div>
-                       <span class="input-group-addon">
+            </div>
+          </div>
+          <!-- /input-group -->
+        </div>
+        <div class="col-md-4">
+          <h4>UX/UI Developer</h4>
+          <div class="select-column">
+            <div>
+              <span class="input-group-addon">
                          <input class="checkbox" type="checkbox" aria-label="..."> Junior
                        </span>
-                     </div>
-                    <div>
-                      <span class="input-group-addon">
+            </div>
+            <div>
+              <span class="input-group-addon">
                         <input class="checkbox" type="checkbox" aria-label="..."> Mid-level
                       </span>
-                    </div>
-                    <div>
-                      <span class="input-group-addon">
+            </div>
+            <div>
+              <span class="input-group-addon">
                         <input class="checkbox" type="checkbox" aria-label="..."> Senior
                       </span>
-                    </div>
-                    </div><!-- /input-group -->
-                 </div>
-               </div>
-               <div >
-                 <form id="radio" action="">
-                  <input type="radio" name="radio" value="all" checked> All
-                  <input type="radio" name="radio" value="yes"> Sponsors
-                  <input type="radio" name="radio" value="no"> Doesn't Sponsor
-                </form>
-               </div>
-               <div class="row city-choice">
-                 <div class="col-md-6">
-                   <select name="address" id="address" class="form-control dropdown">
+            </div>
+          </div>
+          <!-- /input-group -->
+        </div>
+      </div>
+      <div>
+        <form id="radio" action="">
+          <input type="radio" name="radio" value="all" checked> All
+          <input type="radio" name="radio" value="yes"> Sponsors
+          <input type="radio" name="radio" value="no"> Doesn't Sponsor
+        </form>
+      </div>
+      <div class="row city-choice">
+        <div class="col-md-6">
+          <select name="address" id="address" class="form-control dropdown">
                       <option value="barcelona"> Barcelona  </option>
                       <option value="madrid"> Madrid </option>
                       <option value="paris"> Paris </option>
                       <option value="miami"> Miami </option>
                    </select>
-                 </div>
-                 <div class="col-md-6">
-                   <button class="submit" id="sponsor-submit"> Find sponsors </button>
-                 </div>
-               </div>
-          </div>
-         <section class="company-list"></section>
-       </div> <!-- right side -->
-  </div> <!-- intial row div -->
-
-  <div id="hide-div"></div>
-  <!-- <section class="container-fluid prevent-overlap"> </section> -->
-
+        </div>
+        <div class="col-md-6">
+          <button class="submit" id="sponsor-submit"> Find sponsors </button>
+        </div>
+      </div>
+    </div>
+    <section class="company-list"></section>
   </div>
-  <script
-   src="http://code.jquery.com/jquery-3.2.1.min.js"
-   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-   crossorigin="anonymous"></script>
-   <script type="text/javascript"> var locations = [<%- companies %>]; var cities = "<%- city %>"; </script>
+  <!-- right side -->
+</div>
+<!-- intial row div -->
+
+<div id="hide-div"></div>
+<!-- <section class="container-fluid prevent-overlap"> </section> -->
+
+</div>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+  var locations = [<%- companies %>];
+  var cities = "<%- city %>";
+</script>
