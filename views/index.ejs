@@ -4,58 +4,42 @@
 
     <section class="landing-header">
       <div class="row">
-          <h1>Borderless</h1>
+          <h1 id="borderless">Borderless</h1>
       </div>
       <div class="row">
           <h2>Find your sponsor. Find your rockstar.</h2>
       </div>
 
+      <div class="row landing-login" >
+        <div class="col-md-3"></div>
 
-
-      <div class="row landing-login">
-        <div class="col-md-1"></div>
-        <div class="col-md-5">
-
-          <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Signup as
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="/explore"> a Job-seeker</a></li>
-              <li><a href="companies/new"> an Employer</a></li>
-
-
-            </ul>
+        <div class="col-md-3 " id="signup">
+          <div class="signup-link">
+            <div id="sigup"><a class="form-control landing-link" href="/signup">Sign up</a></div>
           </div>
-        </div>
+        </div> <!-- signup-->
 
-        <div class="col-md-5">
-          <div class="city-choice">
-            <select name="city" id="city" class="form-control dropdown">
+
+
+        <div class="col-md-3" id="dropdown">
+          <div class="input-group ">
+            <select name="city" id="city" class="form-control dropdown landing-link">
+               <option value="barcelona"> Search for Sponsors  </option>
                <option value="barcelona"> Barcelona  </option>
                <option value="madrid"> Madrid </option>
                <option value="paris"> Paris </option>
                <option value="miami"> Miami </option>
             </select>
-            <button id="test" class="submit"> Find sponsors </button>
-          </div>
-          <!-- <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Find sponsors in
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li class="city" value="barcelona"> Barcelona</li>
-              <li class="city" value="madrid"> Madrid</li>
-              <li class="city" value="paris"> Paris</li>
-              <li class="city" value="miami"> Miami</li>
-            </ul>
-          </div> -->
+            <span class="input-group-btn">
+              <button class="btn btn-default"  id="test" type="button"> Search</button>
+            </span>
+          </div><!-- /input-group -->
         </div>
+
+
         <div class="col-md-1"></div>
 
-      </div>
+      </div> <!-- landing login-->
 
     </section>
   </div> <!-- background image -->
@@ -65,7 +49,4 @@
  src="http://code.jquery.com/jquery-3.2.1.min.js"
  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
  crossorigin="anonymous"></script>
- <script
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPJkVGfAsJURkAMEAM_40Fx3f3mH2etOQ">
- </script>
  <script type="text/javascript" src="/javascripts/landing-page.js"></script>

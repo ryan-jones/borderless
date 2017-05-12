@@ -1,14 +1,78 @@
-<h3>Add Company</h3>
-		<form method="POST" action="/">
-			<label>Name:</label>
-			<input type="" name="name" placeholder="Name"><br>
-			<label>Description:</label>
-			<input type="" name="description" placeholder="Description"><br>
-            <label>City:</label>
-			<input type="" name="city" placeholder="CityName"><br>
-			<label>Coordinates:</label>
-  		    <input type="text" name="latitude" placeholder="Latitude" >
- 			<input type="text" name="longitude" placeholder="Longitude"><br>
+<div class="container-fluid new-company">
+	<div class="row geo-row">
+		<div class="col-md-5 map-row">
+			<h4>Enter your address</h4>
+			<input id="new-address" type="text" name="address" placeholder="address">
+			<input id="new-submit" type="submit" name="" value="Geocode">
+			<div id="new-map"> </div>
+		</div>
+		<div class="col-md-7 create-company">
+			<h4> Add your company</h4>
+			<form method="POST" action="/company/new">
+				<div class="form-group">
+					<label>Name of Company:</label>
+					<input type="text" class="form-control" id="name" name="name" placeholder="Name">
+				</div>
+				<div class="form-group">
+					<label>Industry</label>
+					<input type="text" class="form-control" id="type" name="type" placeholder="saas, health, ecommerce, etc.">
+				</div>
+				<div class="form-group">
+					<label>City:</label>
+					<input type="text" class="form-control" id="city"name="city" placeholder="City name">
+				</div>
+				<div class="form-group">
+					<label>Are you willing to consider sponsoring a non-resident worker?:</label>
+	        			<select class="form-control" name="description" id="description">
+							<option value="YES">Yes</option>
+							<option value="NO">No</option>
+						</select>
+        		</div>
+				<div>
+					<label>What positions would you consider sponsoring a non-resident for? (Choose all that apply)</label>
+						<h4> Web Developer</h4>
+							<select class="form-control" name="webdeveloper" id="webdeveloper">
+								<option value="JUNIOR-LEVEL">Junior Web Developer</option>
+								<option value="MID-LEVEL">Mid-level Web Developer</option>
+								<option value="SENIOR-LEVEL">Senior Web Developer</option>
+								<option value="NONE">None</option>
+		        			</select>
+						<h4> Mobile Developer</h4>
+							<select class="form-control" name="mobiledeveloper" id="mobiledeveloper">
+								<option value="JUNIOR-LEVEL">Junior Mobile Developer</option>
+								<option value="MID-LEVEL">Mid-level Mobile Developer</option>
+								<option value="SENIOR-LEVEL">Senior Mobile Developer</option>
+								<option value="NONE">None</option>
+							</select>
+						<h4> UX/UI Developer</h4>
+						<select class="form-control" name="uxdeveloper" id="uxdeveloper">
+							<option value="JUNIOR-LEVEL">Junior UX/UI Designer</option>
+							<option value="MID-LEVEL">Mid-level UX/UI Designer</option>
+							<option value="SENIOR-LEVEL">Senior UX/UI Designer</option>
+							<option value="NONE">None</option>
+						</select>
+				</div><br>
+				<div class="form-group">
+					<label>Coordinates:</label>
+		  		<input id="new-latitude"  type="text" name="latitude" placeholder="Latitude" >
+		 			<input id= "new-longitude"   type="text" name="longitude" placeholder="Longitude"><br>
+				</div>
+				<div class="form-group">
+					<label>Company Logo URL</label>
+					<input type="text" class="form-control" id="icon" name="icon" placeholder="URL to icon">
+				</div>
+				<div class="form-group">
+					<label>Website</label>
+					<input type="text" class="form-control" id="website" name="website" placeholder="URL to icon">
+				</div>
+				<div class="form-group">
+					<label>What factors would influence your decision to consider sponsoring a non-resident worker?</label>
+					<input type="text" class="form-control" id="details" name="details" placeholder="experience, languages, etc."><br>
+				</div>
 
-			<input type="submit" name="">
-		</form>
+				<input type="submit" name="">
+			</form>
+		</div>
+	</div>
+</div>
+  <script type="text/javascript" src="/javascripts/new.js"></script>

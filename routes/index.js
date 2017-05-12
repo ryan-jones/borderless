@@ -3,10 +3,13 @@ const bcrypt   = require("bcrypt");
 const Company = require('../models/company');
 const User     = require("../models/user");
 const passport = require("../helpers/passport");
+const Picture = require('../models/pictures');
 const bcryptSalt = 10;
 var auth    = require('../helpers/auth');
+const flash          = require("connect-flash");
 
 var router = express.Router();
+var multer  = require('multer');
 
 
 
@@ -17,47 +20,26 @@ router.get('/', (req, res, next) => {
   })
 
 
+
 /* GET explore page. */
 router.route('/explore')
   .get((req, res, next) => {
     let city = req.query.city;
-    Company.find({},{_id: 0} ,(err, companies)=>{  //if _id: 0, the data excludes all _id values, if _id: 1, then it exclusively returns only _ids
+    Company.find({},{_id: 0, userid: 0} ,(err, companies)=>{  //if _id: 0, the data excludes all _id values, if _id: 1, then it exclusively returns only _ids
       if (err){
         res.render('explore');
       } else {
         res.render('explore', {companies , city});
          //passes to script on explore.ejs page
       }
-
     })
-
-  })
-
-  .post((req, res, next) => { //places the companies onto the map and for use on right-side bar
-    let location = [Number(req.body.longitude), Number(req.body.latitude)];
-
-	   const newCompany = {
-      name:           req.body.name,
-      description:    req.body.description,
-      city:           req.body.city,
-	    coordinates:    location,
-    };
-
-  	const company = new Company(newCompany);
-
-  	company.save((error) => {
-  		if (error) {
-  			next(error);
-  		} else {
-  			res.redirect('/explore');
-  		}
-  	})
   });
 
 
 /* GET users listing. */
 router.get('/signup', function(req, res, next) {
-  res.render('auth/signup', { "message": req.flash("error") });
+  let role = req.query.role;
+  res.render('auth/signup', { "message": req.flash("error"), role });
 });
 
 router.post("/signup", (req, res, next) => {
@@ -66,6 +48,7 @@ router.post("/signup", (req, res, next) => {
   var password = req.body.password;
   var nationality = req.body.nationality;
   var role = req.body.usertype;
+  var companyid = null;
 
   if (username === "" || password === "") {
   	req.flash('error', 'Indicate username and password' );
@@ -88,7 +71,8 @@ router.post("/signup", (req, res, next) => {
       username,
       password: hashPass,
       nationality,
-      role
+      role,
+      companyid
     });
 
     newUser.save((err) => {
@@ -117,19 +101,167 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 
-router.get('/users/index/', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
+router.get('/users/index/', auth.checkLoggedIn('You must be logged in', '/login'), (req, res, next) => {
   if(req.user.role === "USER") {
-      res.render('users/index', { user: JSON.stringify(req.user) });
+      res.render('users/index', { user: req.user});
   } else if (req.user.role === "COMPANY") {
-      res.render('companies/index', { user: JSON.stringify(req.user) });
+      res.render('companies/index', { user: req.user});
   } else {
-      res.render('admin/index', { user: JSON.stringify(req.user) });
+      res.render('admin/index', { user: req.user });
     }
 });
 
-router.get('/new', auth.checkLoggedIn('You must be login', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
-  res.render('companies/new', { user: JSON.stringify(req.user) });
+
+router.get('/company/new', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
+  res.render('companies/new', { user: req.user });
 });
+
+router.post('/company/new', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => { //places the companies onto the map and for use on right-side bar
+    var currentUser = req.session.passport.user._id;
+    let location = [Number(req.body.longitude), Number(req.body.latitude)];
+
+     const newCompany = {
+      name:           req.body.name,
+      type:           req.body.type,
+      city:           req.body.city,
+      description:    req.body.description,
+      webdeveloper:   req.body.webdeveloper,
+      mobiledeveloper: req.body.mobiledeveloper,
+      uxdeveloper:    req.body.uxdeveloper,
+      coordinates:    location,
+      icon:           req.body.icon,
+      website:        req.body.website,
+      details:        req.body.details,
+      userid:         currentUser,
+    };
+
+  	const company = new Company(newCompany);
+
+  	company.save((error, company) => {
+      if (error) {
+  			next(error);
+  		} else {
+        console.log("testetst", company);
+        User.findByIdAndUpdate({_id: currentUser}, {companyid: company._id}, (err, user) => {
+          if (err) {
+            next(err);
+          } else {
+            User
+            .findOne({_id: currentUser})
+            .exec((err, user)=>{
+              if(err){
+                next(err)
+                return
+              }
+              console.log("after creating", user);
+                res.render('companies/index', {user: user});
+            })
+
+          }
+        })
+  		}
+  	})
+  });
+
+router.get('/company/:id/edit', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
+  console.log(req.params.id);
+    console.log(req.query.id);
+  Company.findById({_id: req.params.id}, (err, company) => {
+	  	if (err) {
+	  		next(err);
+          } else {
+            console.log('dentro de company edit router', company);
+        res.render('companies/update', {company});
+          }}
+  )
+});
+
+router.post('/company/:id/edit', (req, res, next) => {
+		Company.findById({_id: req.user.companyid}, (err, company) => {
+      var currentUser = req.session.passport.user._id;
+      let location = [Number(req.body.longitude), Number(req.body.latitude)];
+      if (err) {
+				next(err);
+			} else {
+				company.name =            req.body.name,
+        company.type =            req.body.type,
+        company.city =            req.body.city,
+        company.description =     req.body.description,
+        company.webdeveloper =    req.body.webdeveloper,
+        company.mobiledeveloper = req.body.mobiledeveloper,
+        company.uxdeveloper =     req.body.uxdeveloper,
+        company.coordinates =     location,
+        company.icon =            req.body.icon,
+        company.website =         req.body.website,
+        company.details =         req.body.details,
+        company.userid =          currentUser,
+				company.save((err) => {
+		  		if (err) {
+		  			next(err);
+		  		} else {
+		  			res.redirect('/users/index');
+		  		}
+		  	})
+			}
+		})
+	});
+
+router.route('/company/:id/delete')
+	.get((req, res, next) => {
+		Company.remove({ _id: req.user.companyid }, function(err, company) {
+	    if (err) {
+	    	next(err)
+	    } else {
+        req.user.companyid = null;
+	    	res.redirect('/users/index');
+	    }
+    });
+	});
+
+router.get('/:id/edit', auth.checkLoggedIn('You must be logged in', '/login'), (req, res, next) => {
+  User.findById({_id: req.user._id}, (err, user) => {
+	  	if (err) {
+	  		next(err);
+          } else {
+        res.render('auth/update', {user});
+          }}
+  )
+});
+
+router.post('/:id/edit', (req, res, next) => {
+  console.log('dentro de post en routes', req.body);
+    let password = req.body.password;
+    let salt     = bcrypt.genSaltSync(bcryptSalt);
+    let hashPass = bcrypt.hashSync(password, salt);
+		User.findById({_id: req.user._id}, (err, user) => {
+      var currentUser = req.session.passport.user._id;
+      if (err) {
+				next(err);
+			} else {
+        user.name =               req.body.name,
+        user.password =           hashPass,
+        user.nationality =        req.body.nationality,
+				user.save((err) => {
+		  		if (err) {
+		  			next(err);
+		  		} else {
+		  			res.redirect('/users/index');
+		  		}
+		  	})
+			}
+		})
+	});
+
+router.route('/:id/delete')
+	.get((req, res, next) => {
+		User.remove({ _id: req.user._id }, function(err, user) {
+	    if (err) {
+	    	next(err)
+	    } else {
+	    	res.redirect('/');
+	    }
+    });
+	});
 
 router.get("/logout", (req, res) => {
   req.logout();
@@ -141,7 +273,24 @@ router.get("/logout", (req, res) => {
 });
 
 
-router.get('/test', (req, res, next) =>{
-  res.render('test');
+// Route to upload photos from project base path
+var upload = multer({ dest: './public/uploads/' , limits: {fileSize: 5000000, files:1}, });
+
+router.post('/upload', upload.single('photo'), function(req, res){
+
+  pic = new Picture({
+    name: req.body.name,
+    pic_path: `/uploads/${req.file.filename}`,
+    pic_name: req.file.originalname
+  });
+
+  pic.save((err) => {
+      res.redirect('/users');
+  });
 });
+
+
+
+
+
 module.exports = router;

@@ -3,23 +3,30 @@ const Schema = mongoose.Schema;
 
 const companySchema = new Schema({
   name: String,
+  type: String,
+  city: String,
   description:{
     type: String,
-    enum : ['yes', 'maybe', 'no'],
+    enum : ['YES', 'NO'],
   },
-  position: {
+  webdeveloper: {
     type: String,
-    // enum : ['Junior Web Developer', 'Junior Mobile Developer', 'Junior UX/UI Developer', 'Mid-level Web Developer', 'Mid-level Mobile Developer', 'Mid-level UX/UI Developer', 'Senior Web Developer', 'Senior Mobile Developer', 'Senior UX/UI Developer']
+    enum : ['JUNIOR-LEVEL', 'MID-LEVEL', 'SENIOR-LEVEL', 'NONE'],
   },
-  city: String,
+  mobiledeveloper: {
+    type: String,
+    enum : ['JUNIOR-LEVEL', 'MID-LEVEL', 'SENIOR-LEVEL', 'NONE'],
+  },
+  uxdeveloper: {
+    type: String,
+    enum : ['JUNIOR-LEVEL', 'MID-LEVEL', 'SENIOR-LEVEL', 'NONE'],
+  },
   coordinates: [Number, Number],  // index 0 is lat, index 1 is long
   icon: String,
-  type: String,
   website: String,
   details: String,
+  userid: { type: Schema.Types.ObjectId, ref: 'User' }
 });
-// placeSchema.index({ location: '2dsphere' });
-
 
 const Company = mongoose.model("Company", companySchema);
 
