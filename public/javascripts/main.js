@@ -115,7 +115,7 @@ infowindow = new google.maps.InfoWindow();
     function loadCityCompanies(location) {
       $.ajax({
 
-        url: "https://localhost:3000/api?location=" + location + "&position=" + type + "&level=" +level,
+        url: "https://borderless-sponsors.herokuapp.com/api?location=" + location + "&position=" + type + "&level=" +level,
         method: 'GET',
 
         success: function(companies) {
