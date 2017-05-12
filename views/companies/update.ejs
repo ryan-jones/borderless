@@ -2,9 +2,9 @@
 	<div class="row geo-row">
 		<div class="col-md-5 map-row">
 			<h4>Enter your address</h4>
-			<input id="new-address" type="text" name="address" placeholder="address">
-			<input id="new-submit" type="submit" name="" value="Geocode">
-			<div id="new-map"> </div>
+			<input id="new-address1" type="text" name="address" placeholder="address">
+			<input id="new-submit1" type="submit" name="" value="Geocode">
+			<div id="new-map1"> </div>
 		</div>
 		<div class="col-md-7 create-company">
 			<h4> Add your company</h4>
@@ -54,8 +54,8 @@
 				</div><br>
 				<div class="form-group">
 					<label>Coordinates:</label>
-		  		    <input id="new-latitude"  type="text" name="latitude" placeholder="Latitude" value="<%=company.coordinates[0]%>">
-		 			<input id= "new-longitude"   type="text" name="longitude" placeholder="Longitude" value="<%=company.coordinates[1]%>"><br>
+		  		 <input id="new-latitude1"  type="text" name="latitude" placeholder="Latitude" value="<%=company.coordinates[1]%>">
+		 			<input id= "new-longitude1"   type="text" name="longitude" placeholder="Longitude" value="<%=company.coordinates[0]%>"><br>
 				</div>
 				<div class="form-group">
 					<label>Company Logo URL</label>
@@ -75,3 +75,4 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="/javascripts/edit.js"></script>

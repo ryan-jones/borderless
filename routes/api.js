@@ -3,6 +3,10 @@ var router = express.Router();
 
 const Company = require('../models/company');
 
+
+
+
+
 router.route('/')
 	.get((req, res) => {
         let location = req.query.location;
@@ -10,16 +14,16 @@ router.route('/')
 				let level =req.query.level;
 				var description = req.query.description;
 
-
-
-
-				var levels = ["JUNIOR", 'MID-LEVEL', 'SENIOR-LEVEL']
+				var levels = ["JUNIOR-LEVEL", 'MID-LEVEL', 'SENIOR-LEVEL']
 				var levelIndex = levels.indexOf(level)
 
 				var allSelectedLevels = levels.filter((level, index)=>{
 					return index >= levelIndex
 				})
         location = location.split("").map((char, index)=> index == 0? char.toUpperCase() : char).join("")
+				console.log(type);
+				console.log(allSelectedLevels);
+				console.log(location);
 	  Company.find({city: location, [type]: { $in: allSelectedLevels }}, (error, companies) => {
 	  	if (error) {
 
@@ -28,13 +32,13 @@ router.route('/')
 
 
 	  	} else {
-				console.log('this is location', location, "this is type", type, "this is level", level);
-				console.log(companies);
+				console.log('this is location', location, "this is type", type, "this is level", level, "companies", companies);
+				console.log("return",companies);
 	  		res.status(200).json(companies);
-
 	  	}
 	  });
 	});
+
 
 router.route('/company/:company_id')
 	.get((req, res) => {
@@ -52,4 +56,3 @@ router.route('/company/:company_id')
 
 
 module.exports = router;
-
