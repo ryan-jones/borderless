@@ -25,6 +25,7 @@ const companySchema = new Schema({
   icon: String,
   website: String,
   details: String,
+  userid: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 const Company = mongoose.model("Company", companySchema);
