@@ -25,7 +25,7 @@ router.get('/', (req, res, next) => {
 router.route('/explore')
   .get((req, res, next) => {
     let city = req.query.city;
-    Company.find({},{_id: 0} ,(err, companies)=>{  //if _id: 0, the data excludes all _id values, if _id: 1, then it exclusively returns only _ids
+    Company.find({},{_id: 0, userid: 0} ,(err, companies)=>{  //if _id: 0, the data excludes all _id values, if _id: 1, then it exclusively returns only _ids
       if (err){
         res.render('explore');
       } else {
@@ -35,45 +35,6 @@ router.route('/explore')
 
     })
 
-  })
-
-  .post((req, res, next) => { //places the companies onto the map and for use on right-side bar
-    console.log(req.body);
-    console.log(req.session);
-    var currentUser = req.session.passport.user._id;
-    
-    let location = [Number(req.body.longitude), Number(req.body.latitude)];
-
-	   const newCompany = {
-      name:           req.body.name,
-      type:           req.body.type,
-      city:           req.body.city,
-      description:    req.body.description,
-      webdeveloper:   req.body.webdeveloper,
-      mobiledeveloper: req.body.mobiledeveloper,
-      uxdeveloper:    req.body.uxdeveloper,
-      coordinates:    location,
-      icon:           req.body.icon,
-      website:        req.body.website,
-      details:        req.body.details,
-      userid:         currentUser,
-    };
-
-  	const company = new Company(newCompany);
-
-  	company.save((error, company) => {
-      if (error) {
-  			next(error);
-  		} else {
-        User.findByIdAndUpdate({_id: currentUser}, {companyid: company._id}, (err) => {
-          if (err) {
-            next(err);
-          } else {
-            res.redirect('/users/index/');
-          }
-        })
-  		}
-  	})
   });
 
 
@@ -89,6 +50,7 @@ router.post("/signup", (req, res, next) => {
   var password = req.body.password;
   var nationality = req.body.nationality;
   var role = req.body.usertype;
+  var companyid = null;
 
   if (username === "" || password === "") {
   	req.flash('error', 'Indicate username and password' );
@@ -111,7 +73,8 @@ router.post("/signup", (req, res, next) => {
       username,
       password: hashPass,
       nationality,
-      role
+      role,
+      companyid 
     });
 
     newUser.save((err) => {
@@ -144,6 +107,7 @@ router.get('/users/index/', auth.checkLoggedIn('You must be logged in', '/login'
   if(req.user.role === "USER") {
       res.render('users/index', { user: req.user});
   } else if (req.user.role === "COMPANY") {
+    console.log('antes de llegar a company index', req.user);
       res.render('companies/index', { user: req.user});
   } else {
       res.render('admin/index', { user: req.user });
@@ -151,8 +115,47 @@ router.get('/users/index/', auth.checkLoggedIn('You must be logged in', '/login'
 });
 
 router.get('/company/new', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
-  res.render('companies/new', { user: JSON.stringify(req.user) });
+  res.render('companies/new', { user: req.user });
+  req.flash('error', 'You already created a company. Edit or delete current company first.' );
+      res.render("companies/new", { message: req.flash("error") });
 });
+
+router.post('/company/new', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => { //places the companies onto the map and for use on right-side bar
+    console.log('req inside company new', req);
+    console.log(req.session);
+    var currentUser = req.session.passport.user._id;
+    let location = [Number(req.body.longitude), Number(req.body.latitude)];
+	   const newCompany = {
+      name:           req.body.name,
+      type:           req.body.type,
+      city:           req.body.city,
+      description:    req.body.description,
+      webdeveloper:   req.body.webdeveloper,
+      mobiledeveloper: req.body.mobiledeveloper,
+      uxdeveloper:    req.body.uxdeveloper,
+      coordinates:    location,
+      icon:           req.body.icon,
+      website:        req.body.website,
+      details:        req.body.details,
+      userid:         currentUser,
+    };
+
+  	const company = new Company(newCompany);
+
+  	company.save((error, company) => {
+      if (error) {
+  			next(error);
+  		} else {
+        User.findByIdAndUpdate({_id: currentUser}, {companyid: company._id}, (err) => {
+          if (err) {
+            next(err);
+          } else {
+            res.redirect('/users/index/');
+          }
+        })
+  		}
+  	})
+  });
 
 router.get('/company/:id/edit', auth.checkLoggedIn('You must be logged in', '/login'), auth.checkCredentials('COMPANY'), (req, res, next) => {
   console.log(req.user);
@@ -168,7 +171,8 @@ router.get('/company/:id/edit', auth.checkLoggedIn('You must be logged in', '/lo
 
 router.post('/company/:id/edit', (req, res, next) => {
   console.log('dentro de post en routes', req.body);
-		Company.findById({_id: req.user.companyid}, (error, company) => {
+  console.log('dentro de post en routes user', req.user);
+		Company.findById({_id: req.user.companyid}, (err, company) => {
       var currentUser = req.session.passport.user._id;
 			let location = [Number(req.body.longitude), Number(req.body.latitude)];
       if (err) {
