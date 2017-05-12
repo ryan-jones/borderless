@@ -199,7 +199,12 @@ router.post('/company/:id/edit', (req, res, next) => {
 		  		if (err) {
 		  			next(err);
 		  		} else {
-		  			res.redirect('/users/index');
+            User.findById({_id: currentUser}, (err, user) => {
+                if (err) {
+                  next(err);
+                    } else {
+                  res.render('companies/index', {user});
+                    }}
 		  		}
 		  	})
 			}
