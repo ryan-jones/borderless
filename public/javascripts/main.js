@@ -48,7 +48,7 @@ infowindow = new google.maps.InfoWindow();
         console.log(infowindow);
       })
 
-      companyContent = `<div class="col-md-6 company company-detail" id="${companies._id}"><div class="col-md-3 company-icons"><img src=${companies.icon}></div><div class="col-md-3">${companies.name}<br>${companies.type}</div></div>`;
+      companyContent = `<div class="col-md-12 company company-detail" id="${company._id}"><div class="col-md-12"><h4><strong>${company.name}</strong></h4><br>${company.type}</div></div>`;
       $('.company-list').append(companyContent);
       }); // locations.forEach
     }; // startMarkers
