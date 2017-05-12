@@ -1,3 +1,4 @@
+require("dotenv").config();
 var express = require('express');
 var expressLayouts = require('express-ejs-layouts');
 var path = require('path');
@@ -9,7 +10,7 @@ const session        = require("express-session");
 const auth           = require('./helpers/auth');
 const flash          = require("connect-flash");
 const mongoose = require('mongoose');
-
+const dotenv = require("dotenv");
 
 
 var index = require('./routes/index');
@@ -17,11 +18,13 @@ var users = require('./routes/users');
 var api   = require('./routes/api');
 // var explore = require('./routes/explore');
 
+dotenv.config();
+dotenv.load();
+
 var app = express();
 
-mongoose.connect("mongodb://localhost:27017/borderless");
-// mongoose.connect('mongodb://heroku_klg4wkp7:ev9h5uksaeuuc3dhod8iqh6n7k@ds157500.mlab.com:57500/heroku_klg4wkp7');
-
+mongoose.connect(process.env.MONGODB_URI);
+// mongodb: heroku_klg4wkp7:ev9h5uksaeuuc3dhod8iqh6n7k@ds157500.mlab.com:57500/heroku_klg4wkp7
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

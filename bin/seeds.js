@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 const Company = require('../models/company');
+const dotenv = require('dotenv');
 
-mongoose.connect("mongodb://localhost:27017/borderless");
+dotenv.config();
+dotenv.load();
+
+
+mongoose.connect(process.env.MONGODB_URI);
 
 let companies = [
 {name: 'Tiendeo',
