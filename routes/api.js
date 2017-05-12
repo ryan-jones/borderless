@@ -16,6 +16,7 @@ router.route('/')
 
 				var levels = ["JUNIOR-LEVEL", 'MID-LEVEL', 'SENIOR-LEVEL']
 				var levelIndex = levels.indexOf(level)
+				
 
 				var allSelectedLevels = levels.filter((level, index)=>{
 					return index >= levelIndex

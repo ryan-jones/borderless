@@ -33,10 +33,10 @@ infowindow = new google.maps.InfoWindow();
         lng: companies.coordinates[0]
       };
 
-      var icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+      var icon = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png';
 
       if (companies.description === "YES") {
-        icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+        icon = 'https://maps.google.com/mapfiles/ms/icons/green-dot.png';
       }
 
       var pin = new google.maps.Marker({icon, position, map, title, type, description, details, website, web, mobile, ux, companyId});
@@ -48,7 +48,7 @@ infowindow = new google.maps.InfoWindow();
         console.log(infowindow);
       })
 
-      companyContent = `<div class="col-md-6 company company-detail" id="${companies._id}"><div class="col-md-3 company-icons"><img src=${companies.icon}></div><div class="col-md-3">${companies.name}<br>${companies.type}</div></div>`;
+      companyContent = `<div class="col-md-12 company company-detail" id="${company._id}"><div class="col-md-12"><h4><strong>${company.name}</strong></h4><br>${company.type}</div></div>`;
       $('.company-list').append(companyContent);
       }); // locations.forEach
     }; // startMarkers
@@ -115,7 +115,7 @@ infowindow = new google.maps.InfoWindow();
     function loadCityCompanies(location) {
       $.ajax({
 
-        url: "http://localhost:3000/api?location=" + location + "&position=" + type + "&level=" +level,
+        url: "https://borderless-sponsors.herokuapp.com/api?location=" + location + "&position=" + type + "&level=" +level,
         method: 'GET',
 
         success: function(companies) {
@@ -140,10 +140,10 @@ infowindow = new google.maps.InfoWindow();
               lng: company.coordinates[0]
             };
 
-            var icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+            var icon = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png';
 
             if (company.description === "YES") {
-              icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+              icon = 'https://maps.google.com/mapfiles/ms/icons/green-dot.png';
             }
 
             var pin = new google.maps.Marker({icon, position, map, title, type, description, details, website, web, mobile, ux, companyId});

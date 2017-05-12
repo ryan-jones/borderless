@@ -177,7 +177,7 @@ router.get('/company/:id/edit', auth.checkLoggedIn('You must be logged in', '/lo
 });
 
 router.post('/company/:id/edit', (req, res, next) => {
-		Company.findById({_id: req.user.companyid}, (err, company) => {
+		Company.findById({_id: req.params.id}, (err, company) => {
       var currentUser = req.session.passport.user._id;
       let location = [Number(req.body.longitude), Number(req.body.latitude)];
       if (err) {
@@ -199,6 +199,7 @@ router.post('/company/:id/edit', (req, res, next) => {
 		  		if (err) {
 		  			next(err);
 		  		} else {
+            
 		  			res.redirect('/users/index');
 		  		}
 		  	})
