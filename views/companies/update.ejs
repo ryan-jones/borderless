@@ -8,18 +8,18 @@
 		</div>
 		<div class="col-md-7 create-company">
 			<h4> Add your company</h4>
-			<form method="POST" action="/company/new">
+			<form method="POST" action="/company/<%=company._id%>/edit">
 				<div class="form-group">
 					<label>Name of Company:</label>
-					<input type="text" class="form-control" id="name" name="name" placeholder="Name">
+					<input type="text" class="form-control" id="name" name="name" placeholder="Name" value="<%=company.name%>">
 				</div>
 				<div class="form-group">
 					<label>Industry</label>
-					<input type="text" class="form-control" id="type" name="type" placeholder="saas, health, ecommerce, etc.">
+					<input type="text" class="form-control" id="type" name="type" placeholder="saas, health, ecommerce, etc." value="<%=company.type%>">
 				</div>
 				<div class="form-group">
 					<label>City:</label>
-					<input type="text" class="form-control" id="city"name="city" placeholder="City name">
+					<input type="text" class="form-control" id="city"name="city" placeholder="City name" value="<%=company.city%>">
 				</div>
 				<div class="form-group">
 					<label>Are you willing to consider sponsoring a non-resident worker?:</label>
@@ -54,24 +54,24 @@
 				</div><br>
 				<div class="form-group">
 					<label>Coordinates:</label>
-		  		    <input id="new-latitude"  type="text" name="latitude" placeholder="Latitude" >
-		 			<input id= "new-longitude"   type="text" name="longitude" placeholder="Longitude"><br>
+		  		    <input id="new-latitude"  type="text" name="latitude" placeholder="Latitude" value="<%=company.coordinates[0]%>">
+		 			<input id= "new-longitude"   type="text" name="longitude" placeholder="Longitude" value="<%=company.coordinates[1]%>"><br>
 				</div>
 				<div class="form-group">
 					<label>Company Logo URL</label>
-					<input type="text" class="form-control" id="icon" name="icon" placeholder="URL to icon">
+					<input type="text" class="form-control" id="icon" name="icon" placeholder="URL to icon" value="<%=company.icon%>">
 				</div>
 				<div class="form-group">
 					<label>Website</label>
-					<input type="text" class="form-control" id="website" name="website" placeholder="URL to icon">
+					<input type="text" class="form-control" id="website" name="website" placeholder="URL to icon" value="<%=company.website%>">
 				</div>
 				<div class="form-group">
 					<label>What factors would influence your decision to consider sponsoring a non-resident worker?</label>
-					<input type="text" class="form-control" id="details" name="details" placeholder="experience, languages, etc."><br>
+					<input type="text" class="form-control" id="details" name="details" placeholder="experience, languages, etc." value="<%=company.details%>"><br>
 				</div>
-				
-				<input type="submit" name="">
+				<input type="submit" value="Update" class="btn btn-primary btn-lg btn-block">
 			</form>
+			<a class="btn btn-danger btn-lg btn-block" href="/company/<%= company._id%>/delete" role="button">Delete Account</a>
 		</div>
 	</div>
 </div>
